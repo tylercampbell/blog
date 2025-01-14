@@ -1,12 +1,19 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
-    "./content/**/*.{html,js,md,njk}",
     "./_includes/**/*.{njk,css,js}",
-    "./eleventy.config.js"
+    "./_layouts/**/*.{njk,css,js}",
+    "./content/**/*.{html,js,md,njk}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'nunito': ['Nunito', ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
   plugins: [],
 }

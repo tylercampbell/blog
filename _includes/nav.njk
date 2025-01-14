@@ -1,0 +1,14 @@
+<header class="max-w-prose mx-2 sm:mx-auto mt-6 p-2 border-b flex justify-between items-center flex-col gap-y-6 sm:flex-row sm:pl-0">
+
+  <a href="/"><img src="/assets/babby.svg" alt="wrestling baby" class="w-10 h-auto hover:scale-125 hover:-rotate-12 transition-transform"></a>
+
+  <nav class="text-sm font-semibold">
+    <h2 class="visually-hidden">Top level navigation menu</h2>
+    <ul class="flex justify-between gap-x-6">
+    {%- for entry in collections.all | eleventyNavigation %}
+      <li><a href="{{ entry.url }}" class="px-1.5 py-1 rounded outline-1 hover:outline {% if entry.url == page.url %} underline {% endif %}" {% if entry.url == page.url %} aria-current="page" {% endif %}>{{ entry.title }}</a></li>
+    {%- endfor %}
+    </ul>
+  </nav>
+
+</header>

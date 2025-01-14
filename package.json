@@ -4,8 +4,8 @@
 	"description": "A blog web site using the Eleventy site generator.",
 	"type": "module",
 	"scripts": {
-			"dev": "concurrently 'npx tailwindcss -i ./content/tailwind.css -o ./_site/css/styles.css --watch' 'eleventy --serve'",
-			"build": "npx tailwindcss -i ./content/tailwind.css -o ./_site/css/styles.css && eleventy",
+			"dev": "concurrently 'npx tailwindcss -i ./_includes/tailwind.css -o ./_site/css/styles.css --watch' 'eleventy --serve'",
+			"build": "npx tailwindcss -i ./_includes/tailwind.css -o ./_site/css/styles.css && eleventy",
 			"build-nocolor": "cross-env NODE_DISABLE_COLORS=1 npx @11ty/eleventy",
 			"build-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/",
 			"start-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/ --serve --quiet",

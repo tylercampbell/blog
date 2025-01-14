@@ -6,36 +6,22 @@
 		<title>{{ title or metadata.title }}</title>
 		<meta name="description" content="{{ description or metadata.description }}">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
-		<meta name="generator" content="{{ eleventy.generator }}">
 		<link rel="stylesheet" href="/css/styles.css">
+		<style>{% getBundle "css" %}</style>
 		{#- Add the heading-anchors web component to the JavaScript bundle #}
 		{%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
 	</head>
 
-	<body class="bg-sky-500">
+	<body class="">
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
-		<header class="max-w-prose mx-auto pt-8 pb-2 border-b border-sky-600">
-			<h1 class="text-3xl mb-4 text-center"><a href="/">{{ metadata.title }}</a></h1>
-			<nav>{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-				<h2 class="visually-hidden">Top level navigation menu</h2>
-				<ul class="flex justify-between">
-				{%- for entry in collections.all | eleventyNavigation %}
-					<li><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page" class="underline" {% endif %}>{{ entry.title }}</a></li>
-				{%- endfor %}
-				</ul>
-			</nav>
-		</header>
+		{% include "nav.njk" %}
 
-		<main id="skip" class="max-w-prose mx-auto mt-8">
+		<main id="skip" class="max-w-prose mx-auto">
 			<heading-anchors>
 				{{ content | safe }}
 			</heading-anchors>
 		</main>
-
-		<footer class="text-center mt-16 pb-8">
-			<p><em>Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a></em></p>
-		</footer>
 
 		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
 		<script type="module" src="{% getBundleFileUrl "js" %}"></script>

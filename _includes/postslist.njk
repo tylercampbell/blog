@@ -1,8 +1,8 @@
-<ol class="divide-dashed divide-y divide-sky-600">
+<ol class="px-2 divide-dashed divide-y">
 {%- for post in postslist | reverse %}
-	<li class="flex justify-between py-2">
+	<li class="py-2 flex flex-col sm:flex-row justify-between">
 		<a href="{{ post.url }}" class="font-bold hover:underline">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-		<time class="text-sky-700" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
+		<time class="text-sm" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL dd, yyyy") }}</time>
 	</li>
 {%- endfor %}
 </ol>

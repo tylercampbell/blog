@@ -80,10 +80,11 @@ export default async function(eleventyConfig) {
 	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
 		// Output formats for each image.
-		formats: ["avif", "webp", "auto"],
+		formats: ["svg", "avif", "webp", "auto"],
 
 		// widths: ["auto"],
 
+		failOnError: false,
 		htmlOptions: {
 			imgAttributes: {
 				// e.g. <img loading decoding> assigned on the HTML tag will override these values.
@@ -139,7 +140,8 @@ export const config = {
 	// These are all optional:
 	dir: {
 		input: "content",          // default: "."
-		includes: "../_includes",  // default: "_includes" (`input` relative)
+		includes: "../_includes",
+		layouts: "../_layouts",  // default: "_includes" (`input` relative)
 		data: "../_data",          // default: "_data" (`input` relative)
 		output: "_site"
 	},
