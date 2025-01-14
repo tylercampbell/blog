@@ -1,6 +1,12 @@
-<h1>Tags</h1>
+---js
+const eleventyNavigation = {
+	key: "Tags",
+	order: 3
+};
+---
+<h1 class="text-2xl font-bold mb-8 pb-2 border-b border-sky-600">Tags</h1>
 
-<ul>
+<ul class="flex flex-wrap gap-4">
 {% for tag in collections | getKeys | filterTagList %}
 	{% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
 	<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a></li>

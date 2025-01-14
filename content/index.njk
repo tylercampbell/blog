@@ -8,7 +8,7 @@ const numberOfLatestPostsToShow = 3;
 ---
 {% set postsCount = collections.posts | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
-<h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1>
+<h1 class="text-2xl font-bold mb-8 pb-2 border-b border-sky-600">Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1>
 
 {% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
 {% set postslistCounter = postsCount %}
@@ -16,14 +16,14 @@ const numberOfLatestPostsToShow = 3;
 
 {% set morePosts = postsCount - numberOfLatestPostsToShow %}
 {% if morePosts > 0 %}
-<p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="blog.njk">the archive</a>.</p>
+<p class="border-dashed border-t border-sky-600 pt-2">{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="blog.njk">the archive</a>.</p>
 {% endif %}
 
 {# List every content page in the project #}
-{#
-<ul>
+<ul class="mt-16 bg-sky-800/25 p-4 text-xs leading-loose">
+	<li><code>* ALL CONTENT *</code></li>
 	{%- for entry in collections.all %}
-	<li><a href="{{ entry.url }}"><code>{{ entry.url }}</code></a></li>
+	<li><a href="{{ entry.url }}" class="hover:underline"><code>{{ entry.url }}</code></a></li>
 	{%- endfor %}
 </ul>
-#}
+
