@@ -6,7 +6,7 @@ const eleventyNavigation = {
 const permalink = "/";
 const numberOfLatestPostsToShow = 2;
 ---
-<h1 class="mb-0 text-center font-nunito font-black">{{metadata.title}}</h1>
+<h1 class="pb-8 mb-0 text-center font-nunito font-black">{{metadata.title}}</h1>
 {% set postsCount = collections.posts | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
 {# <h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1> #}
