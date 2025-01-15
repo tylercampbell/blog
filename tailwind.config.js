@@ -1,8 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 
-const defaultTheme = require('tailwindcss/defaultTheme')
+import typography from '@tailwindcss/typography';
+import defaultTheme from 'tailwindcss/defaultTheme.js';
 
-module.exports = {
+export default {
   content: [
     "./_includes/**/*.{njk,css,js}",
     "./_layouts/**/*.{njk,css,js}",
@@ -16,6 +17,7 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    typography,
   ],
 }
+

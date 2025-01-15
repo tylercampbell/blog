@@ -1,17 +1,12 @@
 {
 	"name": "wrestling-blog",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "A blog web site using the Eleventy site generator.",
 	"type": "module",
 	"scripts": {
-		"dev": "concurrently 'npx tailwindcss -i ./_includes/tailwind.css -o ./_site/css/styles.css --watch' 'eleventy --serve'",
-		"build": "npx tailwindcss -i ./_includes/tailwind.css -o ./_site/css/styles.css && eleventy",
-		"build-nocolor": "cross-env NODE_DISABLE_COLORS=1 npx @11ty/eleventy",
-		"build-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/",
-		"start-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/ --serve --quiet",
-		"debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy",
-		"debugstart": "cross-env DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
-		"benchmark": "cross-env DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
+    "clean": "rimraf _site",
+    "build": "cross-env NODE_ENV=production eleventy",
+    "dev": "cross-env NODE_ENV=development npm run clean && eleventy --serve"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^3.0.0",
@@ -21,10 +16,11 @@
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"@tailwindcss/typography": "^0.5.16",
 		"autoprefixer": "^10.4.20",
-		"concurrently": "^9.1.2",
 		"cross-env": "^7.0.3",
+		"cssnano": "^7.0.6",
 		"luxon": "^3.5.0",
 		"postcss": "^8.5.0",
+		"rimraf": "^6.0.1",
 		"tailwindcss": "^3.4.17",
 		"zod": "^3.23.8",
 		"zod-validation-error": "^3.3.1"

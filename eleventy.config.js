@@ -4,7 +4,8 @@ import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
-import pluginFilters from "./_config/filters.js";
+import pluginFilters from "./_11ty/filters.js";
+import postcssFilter from "./_11ty/postcss.js";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function(eleventyConfig) {
@@ -14,11 +15,6 @@ export default async function(eleventyConfig) {
 			return false;
 		}
 	});
-
-  // reload dev server from postcss & esbuild output in package.json
-  eleventyConfig.setServerOptions({
-    watch: ["./_site/css/styles.css"],
-  });
 
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
@@ -100,6 +96,7 @@ export default async function(eleventyConfig) {
 
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
+	eleventyConfig.addPlugin(postcssFilter);
 
 	eleventyConfig.addPlugin(IdAttributePlugin, {
 		// by default we use Eleventy’s built-in `slugify` filter:

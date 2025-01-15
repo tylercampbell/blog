@@ -7,13 +7,22 @@ const permalink = "/";
 const numberOfLatestPostsToShow = 2;
 ---
 <h1 class="pb-8 mb-0 text-center font-nunito font-black">{{metadata.title}}</h1>
+
 {% set postsCount = collections.posts | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
-{# <h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1> #}
-
 {% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
 {% set postslistCounter = postsCount %}
-{% include "poststeasers.njk" %}
+<p class="text-xs py-2 uppercase">Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}:</p>
+<div class="divide-y">
+	{%- for post in postslist | reverse %}
+		<article class="pt-16 pb-4">
+			<section class="prose-sm sm:prose">
+				<a href="{{ post.url }}"><h1 class="inline">{{ post.data.title }}</h1></a>
+				{{ post.templateContent | safe }}
+			</section>
+		</article>
+	{%- endfor %}
+</div>
 
 {% set morePosts = postsCount - numberOfLatestPostsToShow %}
 {% if morePosts > 0 %}

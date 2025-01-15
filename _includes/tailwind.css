@@ -50,7 +50,9 @@ main h1:not(article h1) {
 }
 .prose video,
 .prose iframe {
-	max-width: 100%;
+	width: 100%;
 	height: auto;
+}
+.prose iframe {
 	aspect-ratio: 16/9;
 }
