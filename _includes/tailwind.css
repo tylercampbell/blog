@@ -28,29 +28,29 @@
 
 .post-tag {
 	@apply
-	py-1 px-1.5 outline outline-1 text-sm rounded-md hover:underline;
+	py-1 px-1.5 rounded outline outline-1 text-xs text-nowrap hover:underline;
 }
 
-main h1 {
+main h1:not(article h1) {
 	@apply mt-8 text-2xl font-bold mb-8 pb-2 border-b;
 }
 
 /* Fluid images via https://www.zachleat.com/web/fluid-images/ */
 /* make this only work inside blog posts */
-/* img{
-  max-width: 100%;
+.prose img {
+	max-width: 100%;
 }
-img[width][height] {
-  height: auto;
+.prose img[width][height] {
+	height: auto;
 }
-img[src$=".svg"] {
-  width: 100%;
-  height: auto;
-  max-width: none;
+.prose img[src$=".svg"] {
+	width: 100%;
+	height: auto;
+	max-width: none;
 }
-video,
-iframe {
+.prose video,
+.prose iframe {
 	max-width: 100%;
 	height: auto;
 	aspect-ratio: 16/9;
-} */
+}

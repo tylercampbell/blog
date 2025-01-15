@@ -12,15 +12,13 @@
 		{%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
 	</head>
 
-	<body class="">
+	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		{% include "nav.njk" %}
 
-		<main id="skip" class="max-w-prose mx-auto">
-			<heading-anchors>
-				{{ content | safe }}
-			</heading-anchors>
+		<main id="skip" class="max-w-prose mx-2 sm:mx-auto">
+			{{ content | safe }}
 		</main>
 
 		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
