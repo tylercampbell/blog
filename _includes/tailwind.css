@@ -36,7 +36,8 @@ main h1 {
 }
 
 /* Fluid images via https://www.zachleat.com/web/fluid-images/ */
-img{
+/* make this only work inside blog posts */
+/* img{
   max-width: 100%;
 }
 img[width][height] {
@@ -52,4 +53,4 @@ iframe {
 	max-width: 100%;
 	height: auto;
 	aspect-ratio: 16/9;
-}
+} */
