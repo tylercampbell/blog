@@ -44,11 +44,15 @@
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
-		{% include "nav.njk" %}
+		<div class="min-h-screen flex flex-col">
+				{% include "nav.njk" %}
 
-		<main id="skip" class="max-w-prose mx-2 sm:mx-auto mb-16">
-			{{ content | safe }}
-		</main>
+				<main id="skip" class="w-full flex-grow max-w-prose mx-2 sm:mx-auto">
+					{{ content | safe }}
+				</main>
+
+				<footer id="footer" class="text-xs text-center mt-auto py-4">©2025 👶 contact@wrestling.baby</footer>
+		</div>
 
 		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
 		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
