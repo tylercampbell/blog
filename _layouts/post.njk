@@ -1,31 +1,30 @@
 ---
 layout: base.njk
 ---
-<heading-anchors>
-	<article>
-		<ul class="flex flex-wrap items-end gap-4 mt-2 mb-12">
-			<li class="text-xs w-full sm:w-auto"><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
-			{%- for tag in tags | filterTagList %}
-			{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-			<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a></li>
-			{%- endfor %}
-		</ul>
 
-
-		<section class="prose-sm sm:prose">
-			<h1>{{ title }}</h1>
-			{{ content | safe }}
-		</section>
-	</article>
-</heading-anchors>
-
-	{%- if collections.posts %}
-	{%- set previousPost = collections.posts | getPreviousCollectionItem %}
-	{%- set nextPost = collections.posts | getNextCollectionItem %}
-	{%- if nextPost or previousPost %}
-	<ul class="mb-8 grid grid-cols-2 mt-8 divide-x border p-2 gap-2 text-sm font-bold">
-		<li>{%- if previousPost %}<a class="hover:underline" href="{{ previousPost.url }}"><span class="font-normal text-xs">← Previous</span><br>{{ previousPost.data.title }}</a>{% endif %}</li>
-		<li class="text-right">{%- if nextPost %}<a class="hover:underline" href="{{ nextPost.url }}"><span class="font-normal text-xs">Next →</span><br>{{ nextPost.data.title }}</a>{% endif %}</li>
+<article>
+	<ul class="flex flex-wrap items-end gap-4 mt-2 mb-12">
+		<li class="text-xs w-full sm:w-auto"><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
+		{%- for tag in tags | filterTagList %}
+		{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+		<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a></li>
+		{%- endfor %}
 	</ul>
-	{%- endif %}
-	{%- endif %}
+
+
+	<section class="prose-sm sm:prose">
+		<h1>{{ title }}</h1>
+		{{ content | safe }}
+	</section>
+</article>
+
+{%- if collections.posts %}
+{%- set previousPost = collections.posts | getPreviousCollectionItem %}
+{%- set nextPost = collections.posts | getNextCollectionItem %}
+{%- if nextPost or previousPost %}
+<ul class="mb-8 grid grid-cols-2 mt-8 divide-x border p-2 gap-2 text-sm font-bold">
+	<li>{%- if previousPost %}<a class="hover:underline" href="{{ previousPost.url }}"><span class="font-normal text-xs">← Previous</span><br>{{ previousPost.data.title }}</a>{% endif %}</li>
+	<li class="text-right">{%- if nextPost %}<a class="hover:underline" href="{{ nextPost.url }}"><span class="font-normal text-xs">Next →</span><br>{{ nextPost.data.title }}</a>{% endif %}</li>
+</ul>
+{%- endif %}
+{%- endif %}

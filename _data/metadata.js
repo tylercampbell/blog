@@ -2,7 +2,7 @@ export default {
 	title: "Wrestling Baby",
 	url: "https://www.wrestling.baby/",
 	language: "en",
-	description: "",
+	description: "A wrestling website for crybabies",
 	author: {
 		name: "Wrestling Baby",
 		email: "contact@wrestling.baby",
