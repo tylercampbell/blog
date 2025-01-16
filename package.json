@@ -1,5 +1,5 @@
 {
-	"name": "wrestling-blog",
+	"name": "an-11ty-blog",
 	"version": "0.0.2",
 	"description": "A blog web site using the Eleventy site generator.",
 	"type": "module",

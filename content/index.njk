@@ -4,25 +4,20 @@ eleventyNavigation:
   order: 1
 pagination:
   data: collections.posts
-  size: 2  # Show 2 posts per page
+  size: 20  # Show X posts per page
   reverse: true  # Sort from newest to oldest
   alias: posts
   generatePageOnEmptyData: false
 permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% else %}{% endif %}index.html"
 ---
-<h1 class="pb-8 mb-0 text-center font-nunito font-black">{{metadata.title}}</h1>
+<h1 class="py-4 text-xl border-b text-center font-nunito font-black tracking-wide">{{metadata.title}}</h1>
 
 {# List every content page in the project #}
-<ul class="mt-16 bg-sky-800/25 p-4 text-xs leading-loose">
-	<li><code>* ALL CONTENT *</code></li>
-	{%- for entry in collections.all %}
-	<li><a href="{{ entry.url }}" class="hover:underline"><code>{{ entry.url }}</code></a></li>
-	{%- endfor %}
-</ul>
+{# {% include "list-all-pages.njk" %} #}
 
 <div class="divide-y">
   {% for post in posts %}
-		<article class="pt-16 pb-4">
+		<article class="py-16">
 			<section class="prose-sm sm:prose">
 				<a href="{{ post.url }}"><h1 class="inline">{{ post.data.title }}</h1></a>
 				{{ post.content | safe }}

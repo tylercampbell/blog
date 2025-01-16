@@ -4,7 +4,9 @@ const eleventyNavigation = {
 	order: 2
 };
 ---
-<h1>Tags</h1>
+<h1 class="visually-hidden">Archive</h1>
+
+<h2 class="h1 mt-16 mb-4">All Tags</h2>
 
 <ul class="flex flex-wrap gap-4">
 {% for tag in collections | getKeys | filterTagList %}
@@ -13,7 +15,7 @@ const eleventyNavigation = {
 {% endfor %}
 </ul>
 
-<h1>Archive</h1>
+<h2 class="h1 mt-16 mb-4">All Posts</h2>
 
 {% set postslist = collections.posts %}
 {% include "postslist.njk" %}

@@ -23,8 +23,8 @@ layout: base.njk
 {%- set nextPost = collections.posts | getNextCollectionItem %}
 {%- if nextPost or previousPost %}
 <ul class="mb-8 grid grid-cols-2 mt-8 divide-x border p-2 gap-2 text-sm font-bold">
-	<li>{%- if previousPost %}<a class="hover:underline" href="{{ previousPost.url }}"><span class="font-normal text-xs">← Previous</span><br>{{ previousPost.data.title }}</a>{% endif %}</li>
-	<li class="text-right">{%- if nextPost %}<a class="hover:underline" href="{{ nextPost.url }}"><span class="font-normal text-xs">Next →</span><br>{{ nextPost.data.title }}</a>{% endif %}</li>
+	<li>{%- if previousPost %}<a class="hover:underline" href="{{ previousPost.url }}"><span class="font-normal text-xs">← Older</span><br>{{ previousPost.data.title }}</a>{% endif %}</li>
+	<li class="text-right">{%- if nextPost %}<a class="hover:underline" href="{{ nextPost.url }}"><span class="font-normal text-xs">Newer →</span><br>{{ nextPost.data.title }}</a>{% endif %}</li>
 </ul>
 {%- endif %}
 {%- endif %}
