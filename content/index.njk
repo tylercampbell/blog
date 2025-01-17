@@ -4,8 +4,8 @@ eleventyNavigation:
   order: 1
 pagination:
   data: collections.posts
-  size: 20  # Show X posts per page
-  reverse: true  # Sort from newest to oldest
+  size: 20
+  reverse: true
   alias: posts
   generatePageOnEmptyData: false
 permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% else %}{% endif %}index.html"
@@ -17,14 +17,14 @@ permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 
 
 <div class="divide-y">
   {% for post in posts %}
-		<article class="py-16">
-			<section class="prose-sm sm:prose">
-				<a href="{{ post.url }}"><h1 class="inline">{{ post.data.title }}</h1></a>
-				{{ post.content | safe }}
-			</section>
-		</article>
+  <article class="py-16 prose-sm sm:prose">
+    <h1 class="mb-4 sm:mb-0"><a class="sm:font-bold" href="{{ post.url }}">{{ post.data.title }}</a></h1>
+    {{ post.content | safe }}
+  </article>
 	{% endfor %}
 </div>
+
+{% js %}console.log("i know i'm using multiple h1's");{% endjs %}
 
 {# Pagination Navigation #}
 {%- if pagination.previousPageLink or pagination.nextPageLink %}
@@ -34,3 +34,4 @@ permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 
 	<li class="text-right">{%- if pagination.nextPageLink %}<a class="hover:underline" href="{{ pagination.nextPageLink }}">Older posts →</a>{% endif %}</li>
 </ul>
 {%- endif %}
+

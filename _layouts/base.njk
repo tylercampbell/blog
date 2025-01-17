@@ -43,17 +43,13 @@
 
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
-
-		<div class="min-h-screen flex flex-col">
+		<div class="min-h-screen flex flex-col mx-2 sm:mx-auto max-w-prose">
 				{% include "nav.njk" %}
-
-				<main id="skip" class="w-full flex-grow max-w-prose mx-2 sm:mx-auto">
+				<main id="skip" class="w-full max-w-prose flex-grow">
 					{{ content | safe }}
 				</main>
-
 				<footer id="footer" class="text-xs text-center mt-auto py-4">©2025 👶 contact@wrestling.baby</footer>
 		</div>
-
 		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
 		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
 	</body>
