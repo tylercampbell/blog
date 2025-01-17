@@ -5,5 +5,9 @@ title: Chuck Taylor
 tags: 
   - chuck taylor
   - pwg
+  - another tag
+  - second tag
+  - number 2
+  - posts with two tags
 ---
 <img src="/assets/2017-07-07 Chuck Taylor & OP.jpg" alt="Chuck Taylor & OP" width="640">
