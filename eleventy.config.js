@@ -5,6 +5,7 @@ import pluginNavigation from "@11ty/eleventy-navigation";
 import pluginFilters from "./_11ty/filters.js";
 import postcssFilter from "./_11ty/postcss.js";
 import imageTransform from "./_11ty/image.js";
+import pluginShortcodes from "./_11ty/shortcodes.js";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function(eleventyConfig) {
@@ -62,7 +63,8 @@ export default async function(eleventyConfig) {
     // Filters
     eleventyConfig.addPlugin(pluginFilters);
     eleventyConfig.addPlugin(postcssFilter);
-
+    eleventyConfig.addPlugin(pluginShortcodes);
+    
     eleventyConfig.addShortcode("currentBuildDate", () => {
         return (new Date()).toISOString();
     });
