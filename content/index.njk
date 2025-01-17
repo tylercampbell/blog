@@ -4,12 +4,13 @@ eleventyNavigation:
   order: 1
 pagination:
   data: collections.posts
-  size: 20
+  size: 50
   reverse: true
   alias: posts
   generatePageOnEmptyData: false
 permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% else %}{% endif %}index.html"
 ---
+
 <h1>
   <span class="visually-hidden">WRESTLING BABY</span>
   {% svg "wb-txt.svg", "mt-16 mb-20 sm:mt-20 mb-28 mx-2" %}
@@ -20,21 +21,16 @@ permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 
 
 <div class="divide-y">
   {% for post in posts %}
-  <article class="prose py-12 sm:py-16 first:pt-0">
-    <h2 class="sm:text-4xl"><a class="sm:font-bold" href="{{ post.url }}">{{ post.data.title }}</a></h2>
-    {{ post.content | safe }}
-  </article>
-	{% endfor %}
+    {% include "postTeaser.njk" %}
+  {% endfor %}
 </div>
-
-{% js %}console.log("i know i'm using multiple h1's");{% endjs %}
 
 {# Pagination Navigation #}
 {%- if pagination.previousPageLink or pagination.nextPageLink %}
 <ul class="mb-8 grid grid-cols-3 items-center mt-8 border p-2 gap-2 text-sm font-bold">
-	<li>{%- if pagination.previousPageLink %}<a class="hover:underline" href="{% if pagination.pageNumber == 1 %}/{% else %}{{ pagination.previousPageLink }}{% endif %}">← Newer posts</a>{% endif %}</li>
+  <li>{%- if pagination.previousPageLink %}<a class="hover:underline" href="{% if pagination.pageNumber == 1 %}/{% else %}{{ pagination.previousPageLink }}{% endif %}">← Newer posts</a>{% endif %}</li>
   <li class="font-normal text-xs text-center">Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</li>
-	<li class="text-right">{%- if pagination.nextPageLink %}<a class="hover:underline" href="{{ pagination.nextPageLink }}">Older posts →</a>{% endif %}</li>
+  <li class="text-right">{%- if pagination.nextPageLink %}<a class="hover:underline" href="{{ pagination.nextPageLink }}">Older posts →</a>{% endif %}</li>
 </ul>
 {%- endif %}
 

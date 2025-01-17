@@ -1,25 +1,24 @@
----js
-// <script>
-const pagination = {
-	data: "collections",
-	size: 1,
-	alias: "tag",
-	filter: ["all", "posts"],
-	// addAllPagesToCollections: true,
-};
-
-const eleventyExcludeFromCollections = true;
-
-const eleventyComputed = {
-	title: "Posts tagged '{{ tag }}'",
-	permalink: function(data) {
-		return `/tags/${this.slugify(data.tag)}/`;
-	}
-};
 ---
-<h1 class="h1 mt-16 mb-4">Posts tagged “{{ tag }}”</h1>
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter: 
+    - "all"
+    - "posts"
+permalink: /tags/{{ tag | slugify }}/
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "Posts tagged '{{tag}}'"
+---
 
-{% set postslist = collections[ tag ] %}
-{% include "postslist.njk" %}
+<h1 class="mt-4 mb-12 text-xs w-full sm:w-auto">Posts tagged “{{ tag }}”</h1>
 
-<p class="mt-6">See <a href="archive.njk" class="font-bold hover:underline">all tags</a>.</p>
+<div class="divide-y">
+  {% set taglist = collections[ tag ] %}
+  {% for post in taglist | reverse %}
+    {% include "postTeaser.njk" %}
+  {% endfor %}
+</div>
+
+<p class="border-t pt-2">See <a href="archive.njk" class="font-bold hover:underline">all tags</a>.</p>

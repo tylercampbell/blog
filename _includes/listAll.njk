@@ -1,0 +1,7 @@
+{# List every content page in the project #}
+<ul class="my-16 p-4 bg-sky-800/25 text-xs font-mono leading-loose list-disc  list-inside">
+  <li>* ALL CONTENT *</li>
+  {%- for entry in collections.all %}
+  <li><a href="{{ entry.url }}" class="hover:underline">{{ entry.url }}</a></li>
+  {%- endfor %}
+</ul>

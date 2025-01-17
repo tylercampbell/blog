@@ -1,3 +1,3 @@
 export default {
-	layout: "page.njk",
+  layout: "page.njk",
 };
