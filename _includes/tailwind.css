@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --color-background: theme('colors.blue.300');
-    --color-foreground: theme('colors.sky.900');
+    --color-background: theme('colors.cyan.800');
+    --color-foreground: theme('colors.rose.300');
   }
 
   html {
@@ -33,11 +33,11 @@
 
   /* Semantic component classes */
   .h1 {
-    @apply text-2xl font-bold pb-2 border-b;
+    @apply font-nunito text-2xl font-bold pb-2 border-b;
   }
 
   .tag {
-    @apply py-1 px-1.5 rounded outline outline-1 text-xs whitespace-nowrap hover:underline;
+    @apply py-1 px-1.5 rounded outline outline-1 text-sm whitespace-nowrap hover:underline;
   }
 }
 

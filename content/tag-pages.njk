@@ -12,7 +12,7 @@ eleventyComputed:
   title: "Posts tagged '{{tag}}'"
 ---
 
-<h1 class="mt-4 mb-12 text-xs w-full sm:w-auto">Posts tagged “{{ tag }}”</h1>
+<h1 class="mt-5 mb-12 text-sm w-full sm:w-auto font-sans">Posts tagged “{{ tag }}”</h1>
 
 <div class="divide-y">
   {% set taglist = collections[ tag ] %}

@@ -11,15 +11,12 @@ export default {
   ],
   theme: {
     extend: {
-      // Use more descriptive font name
       fontFamily: {
         nunito: ['Nunito', ...defaultTheme.fontFamily.sans],
       },
-      // Simplified typography configuration
       typography: {
         DEFAULT: {
           css: {
-            // Use currentColor for inheriting text color
             color: 'currentColor',
             a: {
               color: 'currentColor',

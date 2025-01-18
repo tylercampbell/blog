@@ -3,8 +3,8 @@ layout: base.njk
 ---
 
 <article>
-  <ul class="flex flex-wrap items-end gap-4 mt-2 mb-12">
-    <li class="text-xs w-full sm:w-auto"><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
+  <ul class="flex flex-wrap items-end gap-4 mt-4 mb-12">
+    <li class="text-sm w-full sm:w-auto"><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
     {%- for tag in tags | filterTagList %}
     {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
     <li><a href="{{ tagUrl }}" class="tag">{{ tag }}</a></li>
@@ -12,7 +12,7 @@ layout: base.njk
   </ul>
 
 
-  <section class="prose">
+  <section class="prose prose-headings:font-nunito">
     <h1>{{ title }}</h1>
     {{ content | safe }}
   </section>
