@@ -6,13 +6,12 @@
     <title>{{ title or metadata.title }}</title>
     <meta name="description" content="{{ description or metadata.description }}">
     <meta name="generator" content="{{ eleventy.generator }}">
-    {# temporary theme color while i figure out how to use variables #}
-    <meta name="theme-color" content="#164e63">
     <link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" id="theme-color">
     
     {#-
     Plain-text bundles are provided via the `eleventy-plugin-bundle` plugin:
@@ -56,3 +55,19 @@
     <script type="module" src="{% getBundleFileUrl "js" %}"></script>
   </body>
 </html>
+
+{% js %}
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeColorMeta = document.getElementById('theme-color');
+    const rawColor = getComputedStyle(document.documentElement)
+      .getPropertyValue('--color-background')
+      .trim();
+    
+    // Convert Tailwind's color format if needed
+    const formattedColor = rawColor.replace(/\s+/g, '');
+    
+    if (formattedColor) {
+      themeColorMeta.setAttribute('content', formattedColor);
+    }
+  });
+{% endjs %}
