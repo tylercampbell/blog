@@ -6,6 +6,8 @@
     <title>{{ title or metadata.title }}</title>
     <meta name="description" content="{{ description or metadata.description }}">
     <meta name="generator" content="{{ eleventy.generator }}">
+    {# temporary theme color while i figure out how to use variables #}
+    <meta name="theme-color" content="#164e63">
     <link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
