@@ -3,7 +3,7 @@
   <a href="index.njk"><img src="/assets/ui/babby.svg" alt="wrestling baby" class="max-w-12 h-auto hover:scale-125 hover:-rotate-12 transition-transform"></a>
 
   <nav class="text-sm font-semibold">
-    <h2 class="visually-hidden">Top level navigation menu</h2>
+    <h2 class="sr-only">Top level navigation menu</h2>
     <ul class="flex justify-between gap-x-6">
     {%- for entry in collections.all | eleventyNavigation %}
       <li><a href="{{ entry.url }}" class="px-1.5 py-1 rounded outline-1 hover:outline {% if entry.url == page.url %} underline {% endif %}" {% if entry.url == page.url %} aria-current="page" {% endif %}>{{ entry.title }}</a></li>

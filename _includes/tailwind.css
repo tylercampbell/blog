@@ -2,57 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-/* https://www.a11yproject.com/posts/how-to-hide-content/ */
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+@layer base {
+  :root {
+    --color-background: theme('colors.blue.300');
+    --color-foreground: theme('colors.sky.900');
+  }
+
+  html {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  * {
+    @apply border-current fill-current outline-current;
+  }
+
+  /* View transitions support */
+  @view-transition {
+    navigation: auto;
+  }
+
+  /* Font declaration */
+  @font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 200 1000;
+    font-display: swap;
+    src: url('/Nunito-VariableFont_wght.woff2') format('woff2');
+  }
+
+  /* Semantic component classes */
+  .h1 {
+    @apply text-2xl font-bold pb-2 border-b;
+  }
+
+  .tag {
+    @apply py-1 px-1.5 rounded outline outline-1 text-xs whitespace-nowrap hover:underline;
+  }
 }
 
-@view-transition {
-  navigation: auto;
-}
+@layer components {
+  /* Prose styles for content readability */
+  .prose {
+    /* Fluid image handling */
+    img {
+      @apply max-w-full;
 
-@font-face {
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 200 1000;
-  font-display: swap;
-  src: url('/Nunito-VariableFont_wght.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+      &[width][height] {
+        height: auto;
+      }
 
-.h1 {
-  @apply text-2xl font-bold pb-2 border-b;
-}
+      &[src$=".svg"] {
+        @apply w-full max-w-none;
+        height: auto;
+      }
+    }
 
-.post-tag {
-  @apply
-  py-1 px-1.5 rounded outline outline-1 text-xs text-nowrap hover:underline;
-}
+    /* Responsive media */
+    video,
+    iframe {
+      @apply w-full;
+      height: auto;
+    }
 
-/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
-/* make this only work inside blog posts */
-.prose img {
-  max-width: 100%;
-}
-.prose img[width][height] {
-  height: auto;
-}
-.prose img[src$=".svg"] {
-  width: 100%;
-  height: auto;
-  max-width: none;
-}
-.prose video,
-.prose iframe {
-  width: 100%;
-  height: auto;
-}
-.prose iframe {
-  aspect-ratio: 16/9;
+    iframe {
+      aspect-ratio: 16/9;
+    }
+  }
 }

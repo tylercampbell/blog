@@ -7,7 +7,7 @@ layout: base.njk
     <li class="text-xs w-full sm:w-auto"><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
     {%- for tag in tags | filterTagList %}
     {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-    <li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a></li>
+    <li><a href="{{ tagUrl }}" class="tag">{{ tag }}</a></li>
     {%- endfor %}
   </ul>
 

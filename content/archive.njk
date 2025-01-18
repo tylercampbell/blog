@@ -6,14 +6,14 @@ eleventyNavigation:
 
 {# {% include "listAll.njk" %} #}
 
-<h1 class="visually-hidden">Archive</h1>
+<h1 class="sr-only">Archive</h1>
 
 <h2 class="h1 mt-16 mb-4">All Tags</h2>
 
 <ul class="flex flex-wrap gap-4">
 {% for tag in collections | getKeys | filterTagList %}
   {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-  <li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a></li>
+  <li><a href="{{ tagUrl }}" class="tag">{{ tag }}</a></li>
 {% endfor %}
 </ul>
 
