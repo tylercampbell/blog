@@ -4,7 +4,7 @@ eleventyNavigation:
   order: 1
 pagination:
   data: collections.posts
-  size: 50
+  size: 20
   reverse: true
   alias: posts
   generatePageOnEmptyData: false
@@ -13,23 +13,23 @@ permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 
 
 <h1>
   <span class="sr-only">WRESTLING BABY</span>
-  {% svg "wb-txt.svg", "mt-16 mb-20 sm:mt-20 mb-28 mx-2" %}
+  {% svg "wb-txt.svg", "mt-16 pb-20 mb-16 mx-2 fill-[var(--color-foreground)] border-b border-dashed border-[var(--color-decor)]" %}
 </h1>
 
 {# List every content page in the project #}
 {# {% include "list-all-pages.njk" %} #}
 
-<div class="divide-y">
+<div class="divide-y divide-dashed divide-[var(--color-decor)]">
   {% for post in posts %}
-    {% include "postTeaser.njk" %}
+    {% include "postContent.njk" %}
   {% endfor %}
 </div>
 
 {# Pagination Navigation #}
 {%- if pagination.previousPageLink or pagination.nextPageLink %}
-<ul class="mb-8 grid grid-cols-3 items-center mt-8 border p-2 gap-2 text-sm font-bold">
+<ul class="my-8 grid grid-cols-3 items-center gap-2 p-2 text-sm font-bold rounded-md border border-[var(--color-decor)]">
   <li>{%- if pagination.previousPageLink %}<a class="hover:underline" href="{% if pagination.pageNumber == 1 %}/{% else %}{{ pagination.previousPageLink }}{% endif %}">← Newer posts</a>{% endif %}</li>
-  <li class="font-normal text-xs text-center">Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</li>
+  <li class="font-normal text-xs text-center text-[var(--color-decor)]">Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</li>
   <li class="text-right">{%- if pagination.nextPageLink %}<a class="hover:underline" href="{{ pagination.nextPageLink }}">Older posts →</a>{% endif %}</li>
 </ul>
 {%- endif %}

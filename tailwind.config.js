@@ -21,11 +21,11 @@ export default {
             a: {
               color: 'currentColor',
               '&:hover': {
-                opacity: 0.8,
+                // opacity: 0.8,
               },
             },
             // Inherit color for headings and paragraphs
-            'h1, h2, h3, p': {
+            'h1, h2, h3, h4': {
               color: 'currentColor',
             },
           },

@@ -3,6 +3,7 @@ title: Jeff Cobb @ NJPW BITV
 author: 😶‍🌫️
 tags: 
   - jeff cobb
+  - elp
   - njpw
   - beast
 ---

@@ -11,7 +11,7 @@ eleventyNavigation:
 <h2 class="h1 mt-16 mb-4">All Tags</h2>
 
 <ul class="flex flex-wrap gap-4">
-{% for tag in collections | getKeys | filterTagList %}
+{% for tag in collections | getKeys | filterTagList | sort %}
   {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
   <li><a href="{{ tagUrl }}" class="tag">{{ tag }}</a></li>
 {% endfor %}
@@ -20,7 +20,7 @@ eleventyNavigation:
 <h2 class="h1 mt-16 mb-4">All Posts</h2>
 
 {% set postslist = collections.posts %}
-<ol class="divide-dashed divide-y">
+<ol class="divide-dashed divide-y divide-[var(--color-decor)]">
 {%- for post in postslist | reverse %}
   <li class="py-2 flex flex-col sm:flex-row justify-between">
     <a href="{{ post.url }}" class="font-bold hover:underline">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
