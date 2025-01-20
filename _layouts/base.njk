@@ -45,11 +45,20 @@
   <body>
     <a href="#skip" class="sr-only">Skip to main content</a>
     <div class="min-h-screen flex flex-col mx-2 sm:mx-auto max-w-prose">
+        
         {% include "nav.njk" %}
+        
         <main id="skip" class="w-full max-w-prose flex-grow">
           {{ content | safe }}
         </main>
-        <footer id="footer" class="text-xs text-center mt-auto py-4">©2025 👶 contact@wrestling.baby</footer>
+        
+        <footer class="text-xs text-center mt-auto py-4">
+          <ul class="flex items-end justify-center gap-x-4 sm:gap-x-8">
+            <li>©2025 </li>
+            <li>👶 contact@wrestling.baby </li>
+            <li>📡 <a class="underline" href="/feed/feed.xml">RSS/Atom</a></li>
+          </ul>
+        </footer>
     </div>
     <!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
     <script type="module" src="{% getBundleFileUrl "js" %}"></script>

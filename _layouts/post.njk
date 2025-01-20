@@ -5,8 +5,8 @@ layout: base.njk
 <article class="prose sm:prose-lg prose-headings:font-nunito marker:text-current">
 
   <header class="pt-12 pb-16 not-prose">
-    <h1 class="text-3xl sm:text-4xl font-bold font-nunito">{{ title }}</h1>
-    <p class="mt-6">{{ author }} on <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></p>
+    <h1 class="text-3xl sm:text-4xl font-bold font-nunito text-[var(--color-accent)]">{{ title }}</h1>
+    <p class="mt-6 text-sm"><span class="font-bold">{{ author }}</span> on <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate("LLLL dd, yyyy") }}</time></p>
   </header>
 
   {{ content | safe }}

@@ -22,9 +22,9 @@ eleventyNavigation:
 {% set postslist = collections.posts %}
 <ol class="divide-dashed divide-y divide-[var(--color-decor)]">
 {%- for post in postslist | reverse %}
-  <li class="py-2 flex flex-col sm:flex-row justify-between">
-    <a href="{{ post.url }}" class="font-bold hover:underline">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-    <time class="text-sm" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL dd, yyyy") }}</time>
+  <li class="flex flex-col  sm:flex-row py-4 gap-y-1 justify-between">
+    <a href="{{ post.url }}" class="font-bold hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+    <time class="text-sm text-nowrap" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL dd, yyyy") }}</time>
   </li>
 {%- endfor %}
 </ol>
