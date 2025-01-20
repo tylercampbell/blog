@@ -4,8 +4,9 @@
 
 @layer base {
   :root {
+    --color-accent:  theme('colors.rose.300');
+    --color-foreground: theme('colors.stone.200');
     --color-background: theme('colors.cyan.900');
-    --color-foreground: theme('colors.red.300');
     --color-decor: theme('colors.cyan.600');
   }
 
@@ -13,9 +14,8 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
-
-  * { 
-    /* @apply border-current fill-current outline-current; */
+  a:hover {
+    color: var(--color-accent);
   }
 
   /* View transitions support */

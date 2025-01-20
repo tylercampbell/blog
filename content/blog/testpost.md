@@ -2,6 +2,7 @@
 title: This is my other post with a much much longer title that will probably wrap, right?
 description: This is a post on My Blog about leveraging agile frameworks.
 date: 2025-01-14
+author: 🐭 Tara
 tags: 
   - pwg
   - njpw

@@ -2,29 +2,35 @@
 layout: base.njk
 ---
 
-<article class="prose prose-headings:font-nunito marker:text-current">
+<article class="prose sm:prose-lg prose-headings:font-nunito marker:text-current">
 
-  <h1 class="mt-16 text-3xl sm:text-4xl mb-2">{{ title }}</h1>
+  <header class="pt-12 pb-16 not-prose">
+    <h1 class="text-3xl sm:text-4xl font-bold font-nunito">{{ title }}</h1>
+    <p class="mt-6">{{ author }} on <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></p>
+  </header>
 
-  <ul class="flex flex-wrap items-baseline gap-4 not-prose pb-16 border-b border-dashed border-[var(--color-decor)]">
-    <li class="text-sm w-full sm:w-auto"><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
+  {{ content | safe }}
+
+</article>
+
+<footer class="my-16 grid grid-cols-1 border-t border-dashed border-[var(--color-decor)]">
+
+  <ul class="py-8 flex flex-wrap gap-x-3 gap-y-5">
     {%- for tag in tags | filterTagList | sort %}
     {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
     <li><a href="{{ tagUrl }}" class="tag">{{ tag }}</a></li>
     {%- endfor %}
   </ul>
 
-  {{ content | safe }}
+  {%- if collections.posts %}
+  {%- set previousPost = collections.posts | getPreviousCollectionItem %}
+  {%- set nextPost = collections.posts | getNextCollectionItem %}
+  {%- if nextPost or previousPost %}
+  <ul class="grid grid-cols-2 p-2 gap-2 text-sm font-bold rounded-md divide-x border border-[var(--color-decor)] divide-[var(--color-decor)]">
+    <li>{%- if previousPost %}<a class="hover:underline" href="{{ previousPost.url }}"><span class="font-normal text-xs">← Older</span><br>{{ previousPost.data.title }}</a>{% endif %}</li>
+    <li class="text-right">{%- if nextPost %}<a class="hover:underline" href="{{ nextPost.url }}"><span class="font-normal text-xs">Newer →</span><br>{{ nextPost.data.title }}</a>{% endif %}</li>
+  </ul>
+  {%- endif %}
+  {%- endif %}
 
-</article>
-
-{%- if collections.posts %}
-{%- set previousPost = collections.posts | getPreviousCollectionItem %}
-{%- set nextPost = collections.posts | getNextCollectionItem %}
-{%- if nextPost or previousPost %}
-<ul class="my-12 grid grid-cols-2 p-2 gap-2 text-sm font-bold rounded-md divide-x border border-[var(--color-decor)] divide-[var(--color-decor)]">
-  <li>{%- if previousPost %}<a class="hover:underline" href="{{ previousPost.url }}"><span class="font-normal text-xs">← Older</span><br>{{ previousPost.data.title }}</a>{% endif %}</li>
-  <li class="text-right">{%- if nextPost %}<a class="hover:underline" href="{{ nextPost.url }}"><span class="font-normal text-xs">Newer →</span><br>{{ nextPost.data.title }}</a>{% endif %}</li>
-</ul>
-{%- endif %}
-{%- endif %}
+</footer>

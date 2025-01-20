@@ -14,11 +14,11 @@ eleventyComputed:
 
 <h1 class="mt-5 mb-16 text-sm w-full sm:w-auto font-sans">Posts tagged “{{ tag }}”</h1>
 
-<div class="divide-y">
+<div class="divide-y divide-[var(--color-decor)]">
   {% set taglist = collections[ tag ] %}
   {% for post in taglist | reverse %}
     {% include "postContent.njk" %}
   {% endfor %}
 </div>
 
-<p class="pt-2 border-t border-[var(--color-decor)]">See <a href="archive.njk" class="font-bold hover:underline">all tags</a>.</p>
+<p class="pt-2 mb-16 border-t border-[var(--color-decor)]">See <a href="archive.njk" class="font-bold hover:underline">all tags</a>.</p>

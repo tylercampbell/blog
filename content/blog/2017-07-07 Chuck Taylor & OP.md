@@ -1,5 +1,6 @@
 ---
 title: Chuck Taylor
+author: 🐭 Tara
 #description: This is a post on My Blog about agile frameworks.
 #date: "2023-01-23"
 tags: 
