@@ -8,6 +8,8 @@
     --color-foreground: theme('colors.stone.200');
     --color-background: theme('colors.cyan.900');
     --color-decor: theme('colors.cyan.600');
+
+    --pagefind-ui-text: #ffffff;
   }
 
   html {
@@ -67,6 +69,41 @@
 
     iframe {
       aspect-ratio: 16/9;
+    }
+  }
+}
+
+@layer utilities {
+  input.pagefind-ui__search-input {
+    @apply  
+    w-full max-w-prose  
+    bg-[var(--color-background)]
+    focus:border-[var(--color-accent)] focus:outline-none
+    placeholder:text-[var(--color-accent)] placeholder:opacity-100
+    h1 focus:text-[var(--color-foreground)]
+  }
+
+  button.pagefind-ui__search-clear {
+    @apply absolute top-0 right-0 focus:outline-none;
+    font-size: 0;
+    line-height: 1;
+    color: var(--color-accent);
+  }
+  button.pagefind-ui__search-clear::before {
+    @apply pl-1 text-2xl text-[var(--color-decor)] hover:text-[var(--color-accent)] focus:text-[var(--color-accent)];
+    content: '✖';
+  }
+  .pagefind-ui__message,
+  .pagefind-ui__result {
+    @apply mt-4
+  }
+  .pagefind-ui__result-title {
+    @apply text-lg sm:text-xl font-nunito font-bold text-[var(--color-accent)] hover:underline;
+  }
+  .pagefind-ui__result-excerpt {
+    @apply text-sm text-[var(--color-foreground)];
+    & > mark {
+      @apply bg-[var(--color-decor)] text-[var(--color-foreground)];
     }
   }
 }
