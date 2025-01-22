@@ -2,7 +2,7 @@
 layout: base.njk
 ---
 
-<article class="prose sm:prose-lg prose-headings:font-nunito marker:text-current">
+<article class="prose sm:prose-lg prose-headings:font-nunito marker:text-current" data-pagefind-body>
 
   <header class="pt-12 pb-16 not-prose">
     <h1 class="text-3xl sm:text-4xl font-bold font-nunito text-[var(--color-accent)]">{{ title }}</h1>
@@ -11,16 +11,18 @@ layout: base.njk
 
   {{ content | safe }}
 
+  <aside class="mt-16 py-8 border-t border-dashed border-[var(--color-decor)]">
+    <ul class="flex flex-wrap gap-x-3 gap-y-5 not-prose">
+      {%- for tag in tags | filterTagList | sort %}
+      {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+      <li><a href="{{ tagUrl }}" class="tag">{{ tag }}</a></li>
+      {%- endfor %}
+    </ul>
+  </aside>
+
 </article>
 
-<footer class="my-16 grid grid-cols-1 border-t border-dashed border-[var(--color-decor)]">
-
-  <ul class="py-8 flex flex-wrap gap-x-3 gap-y-5">
-    {%- for tag in tags | filterTagList | sort %}
-    {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-    <li><a href="{{ tagUrl }}" class="tag">{{ tag }}</a></li>
-    {%- endfor %}
-  </ul>
+<footer class="mb-16">
 
   {%- if collections.posts %}
   {%- set previousPost = collections.posts | getPreviousCollectionItem %}

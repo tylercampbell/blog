@@ -3,29 +3,38 @@ eleventyNavigation:
   key: "Archive"
   order: 2
 ---
-
 {# {% include "listAll.njk" %} #}
-
 <h1 class="sr-only">Archive</h1>
 
-<h2 class="h1 mt-16 mb-4">All Tags</h2>
+<section class="mt-16">
+  <h2 class="h1 mb-4">All Tags</h2>
+  <ul class="flex flex-wrap gap-4">
+  {% for tag in collections | getKeys | filterTagList | sort %}
+    {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+    <li><a href="{{ tagUrl }}" class="tag">{{ tag }}</a></li>
+  {% endfor %}
+  </ul>
+</section>
 
-<ul class="flex flex-wrap gap-4">
-{% for tag in collections | getKeys | filterTagList | sort %}
-  {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-  <li><a href="{{ tagUrl }}" class="tag">{{ tag }}</a></li>
-{% endfor %}
-</ul>
+<section class="mt-16">
+  <h2 class="h1 mb-4">Search</h2>
+  <div>
+    <div id="search" class="w-full"></div>
+  </div>
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false });"></script>
+</section>
 
-<h2 class="h1 mt-16 mb-4">All Posts</h2>
 
-{% set postslist = collections.posts %}
-<ol class="divide-dashed divide-y divide-[var(--color-decor)]">
-{%- for post in postslist | reverse %}
-  <li class="flex flex-col  sm:flex-row py-4 gap-y-1 justify-between">
-    <a href="{{ post.url }}" class="font-bold hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-    <time class="text-sm text-nowrap" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL dd, yyyy") }}</time>
-  </li>
-{%- endfor %}
-</ol>
-
+<section class="mt-16">
+  <h2 class="h1 mb-4">All Posts</h2>
+  <ol class="divide-dashed divide-y divide-[var(--color-decor)]">
+  {% set postslist = collections.posts %}
+  {%- for post in postslist | reverse %}
+    <li class="flex flex-col  sm:flex-row py-4 gap-y-1 justify-between">
+      <a href="{{ post.url }}" class="font-bold hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+      <time class="text-sm text-nowrap" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL dd, yyyy") }}</time>
+    </li>
+  {%- endfor %}
+  </ol>
+</section>
