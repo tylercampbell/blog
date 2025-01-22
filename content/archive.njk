@@ -7,6 +7,15 @@ eleventyNavigation:
 <h1 class="sr-only">Archive</h1>
 
 <section class="mt-16">
+  <h2 class="sr-only">Search</h2>
+  <div class="relative">
+    <div id="search" class="w-full"></div>
+  </div>
+  {# <link href="/pagefind/pagefind-ui.css" rel="stylesheet"> #}
+  <script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false });"></script>
+</section>
+
+<section class="mt-16">
   <h2 class="h1 mb-4">All Tags</h2>
   <ul class="flex flex-wrap gap-4">
   {% for tag in collections | getKeys | filterTagList | sort %}
@@ -16,17 +25,7 @@ eleventyNavigation:
   </ul>
 </section>
 
-<section class="mt-16">
-  <h2 class="h1 mb-4">Search</h2>
-  <div>
-    <div id="search" class="w-full"></div>
-  </div>
-  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
-  <script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false });"></script>
-</section>
-
-
-<section class="mt-16">
+<section class="mt-16 mb-8">
   <h2 class="h1 mb-4">All Posts</h2>
   <ol class="divide-dashed divide-y divide-[var(--color-decor)]">
   {% set postslist = collections.posts %}
