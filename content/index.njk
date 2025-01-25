@@ -21,7 +21,7 @@ permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 
 
 <div class="divide-y divide-dashed divide-[var(--color-decor)]">
   {% for post in posts %}
-    {% include "postContent.njk" %}
+    {% include "post-content.njk" %}
   {% endfor %}
 </div>
 
