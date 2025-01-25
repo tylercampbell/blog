@@ -59,12 +59,6 @@ export default async function(eleventyConfig) {
     }
   });
 
-  // Add a collection for featProducts
-  eleventyConfig.addCollection('aew', (collectionApi) => {
-    const allData = collectionApi.getAll()[0].data.aew;
-    return allData || [];
-  });
-
   // Image optimization
   await imageTransform(eleventyConfig);
 

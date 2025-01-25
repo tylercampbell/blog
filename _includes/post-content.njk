@@ -9,7 +9,13 @@
     font-bold
     " href="{{ post.url }}">{{ post.data.title }}</a></h2>
 
-  {{ post.content | safe }}
+  {%- if "snapshot" in post.data.tags %}
+    {% for image in post.data.images %}
+      <img src="{{ image.src }}" alt="{{ image.alt }}" width="640px">
+    {% endfor %}
+  {%- else %}
+    {{ post.content | safe }}
+  {%- endif %}
 
   <ul class="not-prose flex flex-wrap gap-x-3 gap-y-5">
     {%- for tag in post.data.tags | filterTagList | sort %}

@@ -6,10 +6,21 @@ layout: base.njk
 
   <header class="pt-12 pb-16 not-prose">
     <h1 class="text-3xl sm:text-4xl font-bold font-nunito text-[var(--color-accent)]">{{ title }}</h1>
-    <p class="mt-6 text-sm"><span class="font-bold">{{ author }}</span> on <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate("LLLL dd, yyyy") }}</time></p>
+    {%- if "snapshot" in tags %}
+      <p class="mt-6 text-sm">{{ promotion }} {{ show }} &middot; <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate("LLLL dd, yyyy") }}</time></p>
+    {%- else %}
+      <p class="mt-6 text-sm"><span class="font-bold">{{ author }}</span> on <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate("LLLL dd, yyyy") }}</time></p>
+    {%- endif %}
   </header>
 
+  {%- if images %}
+    {% for image in images %}
+      <img src="{{ image.src }}" alt="{{ image.alt }}" width="640px">
+    {% endfor %}
+  {%- endif %}
+
   {{ content | safe }}
+
 
   <aside class="mt-16 py-8 border-t border-dashed border-[var(--color-decor)]">
     <ul class="flex flex-wrap gap-x-3 gap-y-5 not-prose">
