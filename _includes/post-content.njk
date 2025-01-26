@@ -3,19 +3,27 @@
   prose prose-headings:font-nunito marker:text-current
   ">
 
-  <h2><a class="
-    text-[1.7rem] sm:text-3xl 
-    decoration-[var(--color-decor)] hover:decoration-[var(--color-accent)] decoration-from-font
-    font-bold
-    " href="{{ post.url }}">{{ post.data.title }}</a></h2>
-
   {%- if "snapshot" in post.data.tags %}
+
+    <p class="text-sm -mb-6 text-[var(--color-decor)]">
+      {{ post.data.promotion }} {{ post.data.show }} &middot; <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate("LLLL dd, yyyy") }}
+    </p>
     {% for image in post.data.images %}
       <img src="{{ image.src }}" alt="{{ image.alt }}" width="640px">
     {% endfor %}
+    <h2 class="-mt-2 mb-6 text-base sm:text-xl">
+      <a class="decoration-[var(--color-decor)] hover:decoration-[var(--color-accent)] decoration-from-font" href="{{ post.url }}">{{ post.data.title }}</a>
+    </h2>
+
   {%- else %}
-    {{ post.content | safe }}
+
+    <h2>
+      <a class="text-[1.7rem] sm:text-3xl decoration-[var(--color-decor)] hover:decoration-[var(--color-accent)] decoration-from-font font-bold" href="{{ post.url }}">{{ post.data.title }}</a>
+    </h2>
+  
   {%- endif %}
+
+  {{ post.content | safe }}
 
   <ul class="not-prose flex flex-wrap gap-x-3 gap-y-5">
     {%- for tag in post.data.tags | filterTagList | sort %}
