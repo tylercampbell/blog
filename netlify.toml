@@ -1,0 +1,20 @@
+[build]
+  #ignore = "node ignore_build.js"
+  publish = "_site"
+  command = "npm run build"
+
+[context.branch-deploy]
+  command = "npm run build && cp _headers _site/_headers"
+
+# POST BUILD OPTIMIZATIONS
+[build.processing]
+  skip_processing = true
+
+# NETLIFY PLUGINS
+[[plugins]]
+  package = "netlify-plugin-cache"
+  [plugins.inputs]
+    paths = [
+      "_site/img",
+      ".cache"
+    ]
