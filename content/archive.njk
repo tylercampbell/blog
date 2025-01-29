@@ -31,9 +31,12 @@ eleventyNavigation:
   {% set postslist = collections.posts %}
   {%- for post in postslist | reverse %}
     {% if "snapshot" not in post.data.tags %}
-      <li class="flex flex-col  sm:flex-row py-4 gap-y-1 justify-between">
-        <a href="{{ post.url }}" class="font-bold hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-        <time class="text-sm text-nowrap" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL dd, yyyy") }}</time>
+      <li>
+        <ul class="flex flex-wrap flex-row py-4 gap-y-1 justify-between text-sm">
+          <li class="w-full"><a href="{{ post.url }}" class="text-base font-bold hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></li>
+          <li class="">by {{ post.data.author }}</li>
+          <li><time class="text-nowrap" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL dd, yyyy") }}</time></li>
+        </ul>
       </li>
     {% endif %}
   {%- endfor %}
@@ -46,9 +49,12 @@ eleventyNavigation:
   {% set postslist = collections.posts %}
   {%- for post in postslist | reverse %}
     {% if "snapshot" in post.data.tags %}
-      <li class="flex flex-col  sm:flex-row py-4 gap-y-1 justify-between">
-        <a href="{{ post.url }}" class="font-bold hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-        <time class="text-sm text-nowrap" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL dd, yyyy") }}</time>
+      <li>
+        <ul class="flex flex-wrap flex-row py-4 gap-y-1 justify-between text-sm">
+          <li class="w-full"><a href="{{ post.url }}" class="text-base hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></li>
+          <li>{{ post.data.promotion }} {{ post.data.show }}</li>
+          <li><time class="text-sm text-nowrap" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLL dd, yyyy") }}</time></li>
+        </ul>        
       </li>
     {% endif %}
   {%- endfor %}

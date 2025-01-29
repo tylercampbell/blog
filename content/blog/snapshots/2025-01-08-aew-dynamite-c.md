@@ -1,5 +1,5 @@
 ---
-title: Harley has a proposal for Mariah
+title: Harley pestered Mariah
 promotion: AEW
 show: Dynamite
 date: 2025-01-08

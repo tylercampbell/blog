@@ -1,5 +1,5 @@
 ---
-title: Harley & Toni speak Australian
+title: Harley & Toni spoke Australian
 promotion: AEW
 show: Dynamite
 date: 2025-01-22

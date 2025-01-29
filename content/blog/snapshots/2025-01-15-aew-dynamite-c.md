@@ -1,5 +1,5 @@
 ---
-title: Julia mists Harley
+title: Harley went blind
 promotion: AEW
 show: Dynamite
 date: 2025-01-15

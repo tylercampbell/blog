@@ -1,5 +1,5 @@
 ---
-title: Harley woos Mercedes with song
+title: Harley performed "Moné Train" for Mercedes
 promotion: AEW
 show: Dynamite
 date: 2025-01-22

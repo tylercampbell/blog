@@ -1,5 +1,5 @@
 ---
-title: Billy Buddy Banger
+title: Bill & Buddy had a banger
 promotion: AEW
 show: Dynamite
 date: 2025-01-08

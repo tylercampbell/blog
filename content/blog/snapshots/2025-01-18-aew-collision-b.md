@@ -1,5 +1,5 @@
 ---
-title: Hangman & CD paint the town red
+title: Hangman & the Fallen Angel painted the town red
 promotion: AEW
 show: Collision
 date: 2025-01-18

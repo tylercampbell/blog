@@ -1,5 +1,5 @@
 ---
-title: Trevor gets revenge
+title: Trevor got revenge
 promotion: AEW
 show: Dynamite
 date: 2025-01-01

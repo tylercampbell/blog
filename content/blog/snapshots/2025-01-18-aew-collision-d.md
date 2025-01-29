@@ -1,5 +1,5 @@
 ---
-title: "Harley's eyesight being restored"
+title: Harley's vision was restored
 promotion: AEW
 show: Collision
 date: 2025-01-18

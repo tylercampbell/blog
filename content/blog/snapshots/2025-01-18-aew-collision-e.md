@@ -1,5 +1,5 @@
 ---
-title: Bad Apple beat by child
+title: A child chopped the Bad Apple
 promotion: AEW
 show: Collision
 date: 2025-01-18

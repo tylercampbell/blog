@@ -1,5 +1,5 @@
 ---
-title: Ospreay & Omega ascend
+title: Omegapowers ascended
 promotion: AEW
 show: Dynamite
 date: 2025-01-22

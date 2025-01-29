@@ -1,5 +1,5 @@
 ---
-title: Joe returns
+title: Joe returned
 promotion: AEW
 show: Dynamite
 date: 2025-01-15

@@ -1,5 +1,5 @@
 ---
-title: Trevor memeing
+title: Trevor memed
 promotion: AEW
 show: Dynamite
 date: 2025-01-15

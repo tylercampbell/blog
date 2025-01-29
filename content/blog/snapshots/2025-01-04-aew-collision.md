@@ -1,5 +1,5 @@
 ---
-title: Ricky doesn't have your money
+title: Ricky didn't have their money
 promotion: AEW
 show: Collision
 date: 2025-01-04

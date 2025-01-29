@@ -1,5 +1,5 @@
 ---
-title: Cope v Redwood
+title: Cope & Redwood had a banger
 promotion: AEW
 show: Collision
 date: 2025-01-11

@@ -1,5 +1,5 @@
 ---
-title: Okada & Ishii try to have a match for American television
+title: Okada & Ishii tried to have an "American TV" match
 promotion: AEW
 show: Collision
 date: 2025-01-18

@@ -1,5 +1,5 @@
 ---
-title: Outrunners excite
+title: Outrunners excited
 promotion: AEW
 show: Collision
 date: 2025-01-18

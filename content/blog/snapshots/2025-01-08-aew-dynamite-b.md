@@ -1,5 +1,5 @@
 ---
-title: Big men run the gauntlet
+title: Big men ran the gauntlet
 promotion: AEW
 show: Dynamite
 date: 2025-01-08
@@ -19,6 +19,4 @@ images:
     alt: Hobbs & Murderhawk tossing Trevor
   - src: /assets/aew-2025-01/2025.01.08.AEW.Dynamite.f.jpg
     alt: Hobbs & Murderhawk tossing Trevor
-  - src: /assets/aew-2025-01/2025.01.08.AEW.Dynamite.g.jpg
-    alt: Yuta attacking JJ
 ---
