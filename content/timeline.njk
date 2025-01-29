@@ -1,0 +1,48 @@
+---
+eleventyNavigation:
+  key: "Timeline"
+  order: 3
+---
+
+<h1 class="sr-only">Timeline</h1>
+
+<section class="pt-8 mb-16">
+
+  {# Group posts by date #}
+  {% set postsByDate = collections.snapshotPosts | groupBy("date") %}
+
+  {# Loop through each date group #}
+  {% for date, posts in postsByDate %}
+
+    <h2 class="mt-8 text-xl sm:text-2xl font-bold font-nunito">{{ date | readableDate('MMMM d, yyyy') }}</h2>
+
+    <div class="ml-2 pl-2 border-l border-[var(--color-decor)]">
+
+      {# Group posts by show within the same date #}
+      {% set postsByShow = posts | groupBy("show") %}
+      {# Loop through each show group #}
+      {% for show, showPosts in postsByShow %}
+        {# Get the promotion from the first post in the show group #}
+        {% set promotion = showPosts[0].data.promotion %}
+
+        <h3 class="pt-6 text-lg sm:text-xl font-bold font-nunito">{{ promotion }} {{ show }}</h3>
+
+        {# Loop through each post in the show group #}
+        {% for post in showPosts %}
+
+          <article class="ml-2 pl-2 border-l border-[var(--color-decor)]">
+            <h4 class="mt-0 pt-6 pb-2 sm:text-lg"><a class="font-nunito text-[var(--color-accent)] hover:underline decoration-from-font" href="{{ post.url }}">{{ post.data.title }}</a></h4>
+            <section class="pl-2 grid grid-cols-1 gap-y-4">
+              {% for image in post.data.images %}
+                <img src="{{ image.src }}" alt="{{ image.alt }}" width="640px" class="rounded-lg">
+              {% endfor %}
+            </section>
+          </article>
+
+        {% endfor %}
+      {% endfor %}
+    </div>
+
+  {% endfor %}
+
+</section>

@@ -59,6 +59,12 @@ export default async function(eleventyConfig) {
     }
   });
 
+  eleventyConfig.addCollection("snapshotPosts", function(collectionApi) {
+    return collectionApi.getFilteredByTag("snapshot").sort((a, b) => {
+      return a.date - b.date;
+    });
+  });
+
   // Image optimization
   await imageTransform(eleventyConfig);
 
@@ -71,6 +77,7 @@ export default async function(eleventyConfig) {
     return (new Date()).toISOString();
   });
 };
+
 
 export const config = {
   // Control which files Eleventy will process

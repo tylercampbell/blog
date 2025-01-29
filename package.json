@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf _site",
     "build": "cross-env NODE_ENV=production eleventy",
-    "dev": "cross-env NODE_ENV=development npm run eleventy --serve --quiet --incremental"
+    "dev": "cross-env NODE_ENV=development eleventy --serve --quiet --incremental"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",

@@ -2,8 +2,18 @@ import { DateTime } from "luxon";
 
 export default function(eleventyConfig) {
   eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
-    // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
-    return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(format || "dd LLLL yyyy");
+    // If dateObj is a string, parse it into a Date object
+    if (typeof dateObj === "string") {
+      dateObj = new Date(dateObj);
+    }
+
+    // Ensure dateObj is a valid Date object
+    if (!(dateObj instanceof Date) || isNaN(dateObj)) {
+      return "Invalid Date";
+    }
+
+    // Format the date using Luxon
+    return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(format || "MMMM d, yyyy");
   });
 
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
@@ -35,6 +45,17 @@ export default function(eleventyConfig) {
 
   eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
     return (tags || []).filter(tag => ["all", "posts", "snapshot"].indexOf(tag) === -1);
+  });
+
+  eleventyConfig.addFilter("groupBy", function(collection, property) {
+    return collection.reduce((acc, item) => {
+      const key = item.data[property] || item[property];
+      if (!acc[key]) {
+        acc[key] = [];
+      }
+      acc[key].push(item);
+      return acc;
+    }, {});
   });
 
 };
