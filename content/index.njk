@@ -16,12 +16,12 @@ permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 
   {% svg "wb-txt.svg", "mt-16 pb-20 mb-16 mx-2 fill-[var(--color-accent)] border-b border-dashed border-[var(--color-decor)]" %}
 </h1>
 
-{# List every content page in the project #}
-{# {% include "list-all-pages.njk" %} #}
-
 <div class="divide-y divide-dashed divide-[var(--color-decor)]">
+  {# Filter out posts with the "snapshot" tag #}
   {% for post in posts %}
-    {% include "post-content.njk" %}
+    {% if "snapshot" not in post.data.tags %}
+      {% include "post-content.njk" %}
+    {% endif %}
   {% endfor %}
 </div>
 
@@ -33,4 +33,3 @@ permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 
   <li class="text-right">{%- if pagination.nextPageLink %}<a class="hover:underline" href="{{ pagination.nextPageLink }}">Older posts →</a>{% endif %}</li>
 </ul>
 {%- endif %}
-
