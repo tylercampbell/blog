@@ -27,13 +27,13 @@ eleventyNavigation:
 
 <section class="mt-16 mb-8">
   <h2 class="h1 mb-4">All Posts</h2>
-  <ol class="divide-dashed divide-y divide-[var(--color-decor)]">
+  <ol class="divide-dashed divide-y divide-[var(--color-decor)]" reversed>
   {% set postslist = collections.posts %}
   {%- for post in postslist | reverse %}
     {% if "snapshot" not in post.data.tags %}
       <li>
         <ul class="flex flex-wrap flex-row py-4 gap-y-1 justify-between text-sm">
-          <li class="w-full"><a href="{{ post.url }}" class="text-base font-bold hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></li>
+          <li class="w-full"><a href="{{ post.url }}" class="font-nunito text-base hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></li>
           <li class="">by {{ post.data.author }}</li>
           <li><time class="text-nowrap" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL dd, yyyy") }}</time></li>
         </ul>
@@ -44,14 +44,14 @@ eleventyNavigation:
 </section>
 
 <section class="mt-16 mb-8">
-  <h2 class="h1 mb-4">All Snapshots</h2>
-  <ol class="divide-dashed divide-y divide-[var(--color-decor)]">
+  <h2 class="h1 mb-4">All Tymeline Snapshots</h2>
+  <ol class="list-decimal divide-dashed divide-y divide-[var(--color-decor)]" reversed>
   {% set postslist = collections.posts %}
   {%- for post in postslist | reverse %}
     {% if "snapshot" in post.data.tags %}
-      <li>
+      <li class="marker:text-[var(--color-decor)] marker:font-nunito marker:font-light">
         <ul class="flex flex-wrap flex-row py-4 gap-y-1 justify-between text-sm">
-          <li class="w-full"><a href="{{ post.url }}" class="text-base hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></li>
+          <li class="w-full"><a href="{{ post.url }}" class="font-nunito text-base hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></li>
           <li>{{ post.data.promotion }} {{ post.data.show }}</li>
           <li><time class="text-sm text-nowrap" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLL dd, yyyy") }}</time></li>
         </ul>        
