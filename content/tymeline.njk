@@ -1,6 +1,6 @@
 ---
 eleventyNavigation:
-  key: "Timeline"
+  key: "Tymeline"
   order: 3
 ---
 
@@ -14,7 +14,7 @@ eleventyNavigation:
   {# Loop through each date group #}
   {% for date, posts in postsByDate %}
 
-    <h2 class="mt-8 text-xl sm:text-2xl font-bold font-nunito">{{ date | readableDate('MMMM d, yyyy') }}</h2>
+    <h2 class="mt-8 text-xl sm:text-2xl font-bold font-nunito text-[var(--color-decor)]">{{ date | readableDate('MMMM d, yyyy') }}</h2>
 
     <div class="ml-2 pl-2 border-l border-[var(--color-decor)]">
 
@@ -32,7 +32,7 @@ eleventyNavigation:
 
           <article class="ml-2 pl-2 border-l border-[var(--color-decor)]">
             <h4 class="pt-4 sm:text-lg"><a class="font-nunito text-[var(--color-accent)] hover:underline decoration-from-font" href="{{ post.url }}">{{ post.data.title }}</a></h4>
-            <div class="pt-2 pl-4 grid grid-cols-1 gap-y-2">
+            <div class="pt-2 pl-2 grid grid-cols-1 gap-y-2">
               {% for image in post.data.images %}
                 <img src="{{ image.src }}" alt="{{ image.alt }}" width="640px" class="rounded-lg">
               {% endfor %}
