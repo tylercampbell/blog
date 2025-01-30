@@ -59,13 +59,6 @@ export default async function(eleventyConfig) {
     }
   });
 
-  // OLD
-  eleventyConfig.addCollection("nonSnapshotPosts", function(collectionApi) {
-    return collectionApi.getFilteredByTag("posts").filter(post => {
-      return !post.data.tags || !post.data.tags.includes("snapshot");
-    });
-  });
-
   // Collection for posts with the "post" tag
   eleventyConfig.addCollection("posts", function(collectionApi) {
     return collectionApi.getFilteredByTag("post").sort((a, b) => {
@@ -78,6 +71,13 @@ export default async function(eleventyConfig) {
     return collectionApi.getFilteredByTag("snapshot").sort((a, b) => {
       return a.date - b.date; // Sort by date (oldest first)
     });
+  });
+
+  // Collection for combined posts and snapshots
+  eleventyConfig.addCollection("combinedPosts", function(collectionApi) {
+    const posts = collectionApi.getFilteredByTag("post");
+    const snapshots = collectionApi.getFilteredByTag("snapshot");
+    return posts.concat(snapshots).sort((a, b) => b.date - a.date); // Sort by date (newest first)
   });
 
   // Image optimization

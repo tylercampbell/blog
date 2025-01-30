@@ -8,10 +8,22 @@
 {% if mode == "pagination" %}
   {# Pagination mode: Use pagination.previousPageLink and pagination.nextPageLink #}
   {%- if pagination.previousPageLink or pagination.nextPageLink %}
-    <ul class="my-8 grid grid-cols-3 items-center gap-2 p-2 text-sm font-bold rounded-md border border-[var(--color-decor)]">
-      <li>{%- if pagination.previousPageLink %}<a class="hover:underline" href="{% if pagination.pageNumber == 1 %}/{% else %}{{ pagination.previousPageLink }}{% endif %}">← Newer posts</a>{% endif %}</li>
-      <li class="font-normal text-xs text-center text-[var(--color-decor)]">Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</li>
-      <li class="text-right">{%- if pagination.nextPageLink %}<a class="hover:underline" href="{{ pagination.nextPageLink }}">Older posts →</a>{% endif %}</li>
+    <ul class="grid grid-cols-3 items-center gap-2 p-2 text-sm font-bold rounded-md border border-[var(--color-decor)]">
+      <li>
+        {%- if pagination.previousPageLink %}
+          <a class="hover:underline" href="{% if pagination.pageNumber == 1 %}/{% else %}{{ pagination.previousPageLink }}{% endif %}">← Newer posts</a>
+        {%- else %}
+        <span class="font-normal text-[var(--color-decor)]">Newest</span>
+        {% endif %}
+      </li>
+      <li class="font-normal text-xs text-center text-[var(--color-decor)]">{{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</li>
+      <li class="text-right">
+        {%- if pagination.nextPageLink %}
+          <a class="hover:underline" href="{{ pagination.nextPageLink }}">Older posts →</a>
+        {%- else %}
+          <span class="font-normal text-[var(--color-decor)]">Oldest</span>
+        {% endif %}
+        </li>
     </ul>
   {%- endif %}
 
@@ -38,6 +50,8 @@
             <span class="font-normal text-xs">← Older</span><br>
             {{ previousItem.data.title }}
           </a>
+        {%- else %}
+          <span class="font-normal text-xs text-[var(--color-decor)]">Oldest</span>
         {% endif %}
       </li>
       <li class="text-right">
@@ -46,6 +60,8 @@
             <span class="font-normal text-xs">Newer →</span><br>
             {{ nextItem.data.title }}
           </a>
+        {%- else %}
+          <span class="font-normal text-xs text-[var(--color-decor)]">Newest</span>
         {% endif %}
       </li>
     </ul>

@@ -1,11 +1,10 @@
 ---
 eleventyNavigation:
-  key: Posts
-  order: 1
+  key: Home
+  order: 0
 pagination:
-  data: collections.posts
-  size: 9
-  reverse: true
+  data: collections.combinedPosts
+  size: 99
   alias: posts
   generatePageOnEmptyData: false
 permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% else %}{% endif %}index.html"
@@ -22,6 +21,8 @@ permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 
   {% endfor %}
 </div>
 
-{# Pagination Navigation #}
-{% set mode = "pagination" %}
-{% include "paginator.njk" %}
+<div class="mb-16">
+  {# Pagination Navigation #}
+  {% set mode = "pagination" %}
+  {% include "paginator.njk" %}
+</div>
