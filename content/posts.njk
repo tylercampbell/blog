@@ -4,12 +4,10 @@ eleventyNavigation:
   order: 1
 ---
 
-<header class="pt-16 pb-16 not-prose">
-  <h1 class="text-3xl sm:text-4xl font-bold font-nunito text-[var(--color-accent)]">Posts</h1>
-</header>
+<h1 class="sr-only">Posts</h1>
 
-<div class="divide-y divide-dashed divide-[var(--color-decor)]">
+<section class="mt-16 divide-y divide-dashed divide-[var(--color-decor)]">
   {% for post in collections.posts | reverse %}
     {% include "content-post.njk" %}
   {% endfor %}
-</div>
+</section>
