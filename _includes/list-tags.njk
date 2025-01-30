@@ -1,0 +1,8 @@
+<ul class="flex flex-wrap gap-x-3 gap-y-5 not-prose">
+  {%- for tag in tags | filterTagList | sort %}
+    {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+    <li>
+      <a href="{{ tagUrl }}" class="tag">{{ tag }}</a>
+    </li>
+  {%- endfor %}
+</ul>

@@ -1,9 +1,8 @@
 ---
 eleventyNavigation:
   key: "Archive"
-  order: 2
+  order: 3
 ---
-{# {% include "listAll.njk" %} #}
 <h1 class="sr-only">Archive</h1>
 
 <section class="mt-16">
@@ -11,52 +10,47 @@ eleventyNavigation:
   <div class="relative">
     <div id="search" class="w-full"></div>
   </div>
-  {# <link href="/pagefind/pagefind-ui.css" rel="stylesheet"> #}
   <script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false });"></script>
 </section>
 
 <section class="mt-16">
   <h2 class="h1 mb-4">All Tags</h2>
   <ul class="flex flex-wrap gap-4">
-  {% for tag in collections | getKeys | filterTagList | sort %}
-    {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-    <li><a href="{{ tagUrl }}" class="tag">{{ tag }}</a></li>
-  {% endfor %}
+    {# Combine tags from posts and snapshots collections #}
+    {% set allTags = [] %}
+    {% for post in collections.posts %}
+      {% for tag in post.data.tags %}
+        {% if not allTags.includes(tag) %}
+          {% set allTags = allTags.concat([tag]) %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    {% for snapshot in collections.snapshots %}
+      {% for tag in snapshot.data.tags %}
+        {% if not allTags.includes(tag) %}
+          {% set allTags = allTags.concat([tag]) %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+
+    {# Filter and sort the tags #}
+    {% for tag in allTags | filterTagList | sort %}
+      {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+      <li><a href="{{ tagUrl }}" class="tag">{{ tag }}</a></li>
+    {% endfor %}
   </ul>
 </section>
 
 <section class="mt-16 mb-8">
   <h2 class="h1 mb-4">All Posts</h2>
-  <ol class="divide-dashed divide-y divide-[var(--color-decor)]" reversed>
-  {% set postslist = collections.posts %}
-  {%- for post in postslist | reverse %}
-    {% if "snapshot" not in post.data.tags %}
-      <li>
-        <ul class="flex flex-wrap flex-row py-4 gap-y-1 justify-between text-sm">
-          <li class="w-full"><a href="{{ post.url }}" class="font-nunito text-base hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></li>
-          <li class="">by {{ post.data.author }}</li>
-          <li><time class="text-nowrap" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL dd, yyyy") }}</time></li>
-        </ul>
-      </li>
-    {% endif %}
-  {%- endfor %}
-  </ol>
+  {% set posts = collections.posts | filterTagList %}
+  {% set showAuthor = true %}
+  {% include "list-posts.njk" %}
 </section>
 
 <section class="mt-16 mb-8">
-  <h2 class="h1 mb-4">All Tymeline Snapshots</h2>
-  <ol class="list-decimal divide-dashed divide-y divide-[var(--color-decor)]" reversed>
-  {% set postslist = collections.posts %}
-  {%- for post in postslist | reverse %}
-    {% if "snapshot" in post.data.tags %}
-      <li class="marker:text-[var(--color-decor)] marker:font-nunito marker:font-light">
-        <ul class="flex flex-wrap flex-row py-4 gap-y-1 justify-between text-sm">
-          <li class="w-full"><a href="{{ post.url }}" class="font-nunito text-base hover:underline text-[var(--color-accent)]">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></li>
-          <li>{{ post.data.promotion }} {{ post.data.show }}</li>
-          <li><time class="text-sm text-nowrap" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLL dd, yyyy") }}</time></li>
-        </ul>        
-      </li>
-    {% endif %}
-  {%- endfor %}
-  </ol>
+  <h2 class="h1 mb-4">All Snapshots</h2>
+  {% set posts = collections.snapshots %}
+  {% set showPromotion = true %}
+  {% include "list-posts.njk" %}
 </section>

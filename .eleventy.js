@@ -59,9 +59,24 @@ export default async function(eleventyConfig) {
     }
   });
 
-  eleventyConfig.addCollection("snapshotPosts", function(collectionApi) {
+  // OLD
+  eleventyConfig.addCollection("nonSnapshotPosts", function(collectionApi) {
+    return collectionApi.getFilteredByTag("posts").filter(post => {
+      return !post.data.tags || !post.data.tags.includes("snapshot");
+    });
+  });
+
+  // Collection for posts with the "post" tag
+  eleventyConfig.addCollection("posts", function(collectionApi) {
+    return collectionApi.getFilteredByTag("post").sort((a, b) => {
+      return a.date - b.date; // Sort by date (oldest first)
+    });
+  });
+
+  // Collection for posts with the "snapshot" tag
+  eleventyConfig.addCollection("snapshots", function(collectionApi) {
     return collectionApi.getFilteredByTag("snapshot").sort((a, b) => {
-      return a.date - b.date;
+      return a.date - b.date; // Sort by date (oldest first)
     });
   });
 

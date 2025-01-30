@@ -1,0 +1,53 @@
+{# prev-next-nav.njk #}
+{# Required Variables:
+  - mode: "posts" | "snapshots" | "both" | "pagination"
+  - page: The current page object (required for "posts", "snapshots", and "both" modes)
+  - pagination: The pagination object (required for "pagination" mode)
+#}
+
+{% if mode == "pagination" %}
+  {# Pagination mode: Use pagination.previousPageLink and pagination.nextPageLink #}
+  {%- if pagination.previousPageLink or pagination.nextPageLink %}
+    <ul class="my-8 grid grid-cols-3 items-center gap-2 p-2 text-sm font-bold rounded-md border border-[var(--color-decor)]">
+      <li>{%- if pagination.previousPageLink %}<a class="hover:underline" href="{% if pagination.pageNumber == 1 %}/{% else %}{{ pagination.previousPageLink }}{% endif %}">← Newer posts</a>{% endif %}</li>
+      <li class="font-normal text-xs text-center text-[var(--color-decor)]">Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</li>
+      <li class="text-right">{%- if pagination.nextPageLink %}<a class="hover:underline" href="{{ pagination.nextPageLink }}">Older posts →</a>{% endif %}</li>
+    </ul>
+  {%- endif %}
+
+{% else %}
+  {# Collection mode: Use collections.posts, collections.snapshots, or both #}
+  {%- if mode == "posts" %}
+    {%- set collection = collections.posts %}
+  {%- elif mode == "snapshots" %}
+    {%- set collection = collections.snapshots %}
+  {%- elif mode == "both" %}
+    {%- set collection = collections.posts.concat(collections.snapshots) | sortByDate %}
+  {%- endif %}
+
+  {# Get the previous and next items in the collection #}
+  {%- set previousItem = collection | getPreviousCollectionItem(page) %}
+  {%- set nextItem = collection | getNextCollectionItem(page) %}
+
+  {# Render the previous/next navigation #}
+  {%- if nextItem or previousItem %}
+    <ul class="grid grid-cols-2 p-2 gap-2 text-sm font-bold rounded-md divide-x border border-[var(--color-decor)] divide-[var(--color-decor)]">
+      <li>
+        {%- if previousItem %}
+          <a class="hover:underline" href="{{ previousItem.url }}">
+            <span class="font-normal text-xs">← Older</span><br>
+            {{ previousItem.data.title }}
+          </a>
+        {% endif %}
+      </li>
+      <li class="text-right">
+        {%- if nextItem %}
+          <a class="hover:underline" href="{{ nextItem.url }}">
+            <span class="font-normal text-xs">Newer →</span><br>
+            {{ nextItem.data.title }}
+          </a>
+        {% endif %}
+      </li>
+    </ul>
+  {%- endif %}
+{% endif %}

@@ -1,7 +1,7 @@
 ---
 eleventyNavigation:
-  key: "Tymeline"
-  order: 3
+  key: "Snapshots"
+  order: 2
 ---
 
 <h1 class="sr-only">Timeline</h1>
@@ -9,7 +9,7 @@ eleventyNavigation:
 <section class="pt-8 mb-16">
 
   {# Group posts by date #}
-  {% set postsByDate = collections.snapshotPosts | groupBy("date") %}
+  {% set postsByDate = collections.snapshots | groupBy("date") %}
 
   {# Loop through each date group #}
   {% for date, posts in postsByDate %}

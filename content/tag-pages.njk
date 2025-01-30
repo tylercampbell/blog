@@ -17,7 +17,7 @@ eleventyComputed:
 <div class="divide-y divide-dashed divide-[var(--color-decor)]">
   {% set taglist = collections[ tag ] %}
   {% for post in taglist | reverse %}
-    {% include "post-content.njk" %}
+    {% include "content-post.njk" %}
   {% endfor %}
 </div>
 

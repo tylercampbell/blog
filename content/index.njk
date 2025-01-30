@@ -1,10 +1,10 @@
 ---
 eleventyNavigation:
-  key: Home
+  key: Posts
   order: 1
 pagination:
   data: collections.posts
-  size: 999
+  size: 9
   reverse: true
   alias: posts
   generatePageOnEmptyData: false
@@ -17,19 +17,11 @@ permalink: "{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 
 </h1>
 
 <div class="divide-y divide-dashed divide-[var(--color-decor)]">
-  {# Filter out posts with the "snapshot" tag #}
   {% for post in posts %}
-    {% if "snapshot" not in post.data.tags %}
-      {% include "post-content.njk" %}
-    {% endif %}
+    {% include "content-post.njk" %}
   {% endfor %}
 </div>
 
 {# Pagination Navigation #}
-{%- if pagination.previousPageLink or pagination.nextPageLink %}
-<ul class="my-8 grid grid-cols-3 items-center gap-2 p-2 text-sm font-bold rounded-md border border-[var(--color-decor)]">
-  <li>{%- if pagination.previousPageLink %}<a class="hover:underline" href="{% if pagination.pageNumber == 1 %}/{% else %}{{ pagination.previousPageLink }}{% endif %}">← Newer posts</a>{% endif %}</li>
-  <li class="font-normal text-xs text-center text-[var(--color-decor)]">Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</li>
-  <li class="text-right">{%- if pagination.nextPageLink %}<a class="hover:underline" href="{{ pagination.nextPageLink }}">Older posts →</a>{% endif %}</li>
-</ul>
-{%- endif %}
+{% set mode = "pagination" %}
+{% include "paginator.njk" %}

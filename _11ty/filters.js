@@ -1,6 +1,12 @@
 import { DateTime } from "luxon";
 
 export default function(eleventyConfig) {
+  // Custom filter to get the title of a page from its URL
+  eleventyConfig.addFilter("getPageTitle", function(url) {
+    const page = this.ctx.collections.all.find((page) => page.url === url);
+    return page ? page.data.title : "Untitled";
+  });
+  
   eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
     // If dateObj is a string, parse it into a Date object
     if (typeof dateObj === "string") {
@@ -44,7 +50,7 @@ export default function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
-    return (tags || []).filter(tag => ["all", "posts", "snapshot"].indexOf(tag) === -1);
+    return (tags || []).filter(tag => ["all", "post", "snapshot"].indexOf(tag) === -1);
   });
 
   eleventyConfig.addFilter("groupBy", function(collection, property) {

@@ -1,0 +1,25 @@
+{# list-posts.njk #}
+<ol class="divide-dashed divide-y divide-[var(--color-decor)]" reversed>
+  {%- for post in posts | reverse %}
+    <li class="marker:text-[var(--color-decor)] marker:font-nunito marker:font-light">
+      <ul class="flex flex-wrap flex-row py-4 gap-y-1 justify-between text-sm">
+        <li class="w-full">
+          <a href="{{ post.url }}" class="font-nunito text-base hover:underline text-[var(--color-accent)]">
+            {% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}
+          </a>
+        </li>
+        {% if showAuthor and post.data.author %}
+          <li>by {{ post.data.author }}</li>
+        {% endif %}
+        {% if showPromotion and post.data.promotion and post.data.show %}
+          <li>{{ post.data.promotion }} {{ post.data.show }}</li>
+        {% endif %}
+        <li>
+          <time class="text-nowrap" datetime="{{ post.date | htmlDateString }}">
+            {{ post.date | readableDate("LLLL dd, yyyy") }}
+          </time>
+        </li>
+      </ul>
+    </li>
+  {%- endfor %}
+</ol>

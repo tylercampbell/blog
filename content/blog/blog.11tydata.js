@@ -2,7 +2,7 @@ import slugify from "slugify";
 
 export default {
   tags: [
-    "posts"
+    "post"
   ],
   "layout": "post.njk",
   eleventyComputed: {
