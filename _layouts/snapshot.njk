@@ -2,9 +2,9 @@
 layout: base.njk
 ---
 
-<article class="prose sm:prose-lg prose-headings:font-nunito marker:text-current" data-pagefind-body>
+<article class="my-16 prose sm:prose-lg prose-headings:font-nunito marker:text-current" data-pagefind-body>
 
-  <header class="pt-16 pb-16 not-prose">
+  <header class="pb-16 not-prose">
     <h1 class="text-3xl sm:text-4xl font-bold font-nunito text-[var(--color-accent)]">{{ title }}</h1>
     <p class="mt-6 text-sm">{{ promotion }} {{ show }} &middot; <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate("LLLL dd, yyyy") }}</time></p>
   </header>
@@ -21,7 +21,7 @@ layout: base.njk
 
 </article>
 
-<footer class="mb-16">
+{# <footer class="mb-16">
   {% set mode = "snapshots" %}
   {% include "paginator.njk" %}
-</footer>
+</footer> #}
