@@ -9,10 +9,10 @@ tags:
   - cd
   - hangman
 images:
-  - src: /assets/aew-2025-01/2025.01.18.AEW.Collision.b.jpg
+  - src: /assets/snapshots/2025.01.18.AEW.Collision.b.jpg
     alt: Daniels retirement bloodbath
-  - src: /assets/aew-2025-01/2025.01.18.AEW.Collision.c.jpg
+  - src: /assets/snapshots/2025.01.18.AEW.Collision.c.jpg
     alt: Crazed Hangman
-  - src: /assets/aew-2025-01/2025.01.18.AEW.Collision.d.jpg
+  - src: /assets/snapshots/2025.01.18.AEW.Collision.d.jpg
     alt: Daniels leaking
 ---

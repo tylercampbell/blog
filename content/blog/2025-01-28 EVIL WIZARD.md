@@ -2,7 +2,7 @@
 title: EVERYTHING IS EVIL
 author: 😶‍🌫️
 tags: 
-  - evil
+  - EVIL
   - drip
   - njpw
   - beast

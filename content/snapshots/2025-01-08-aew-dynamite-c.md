@@ -7,6 +7,6 @@ tags:
   - mariah
   - harley
 images:
-  - src: /assets/aew-2025-01/2025.01.08.AEW.Dynamite.h.jpg
+  - src: /assets/snapshots/2025.01.08.AEW.Dynamite.h.jpg
     alt: Mariah intimidating Harley
 ---

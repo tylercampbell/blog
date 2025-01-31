@@ -7,6 +7,6 @@ tags:
   - harley
   - julia
 images:
-  - src: /assets/aew-2025-01/2025.01.15.AEW.Dynamite.c.jpg
+  - src: /assets/snapshots/2025.01.15.AEW.Dynamite.c.jpg
     alt: Harley misted
 ---

@@ -7,6 +7,6 @@ tags:
   - okada
   - ishii
 images:
-  - src: /assets/aew-2025-01/2025.01.18.AEW.Collision.e.jpg
+  - src: /assets/snapshots/2025.01.18.AEW.Collision.e.jpg
     alt: Okada vs Ishii in an American TV style match
 ---

@@ -8,8 +8,8 @@ tags:
   - buddy
   - beast
 images:
-  - src: /assets/aew-2025-01/2025.01.08.AEW.Dynamite.a.jpg
+  - src: /assets/snapshots/2025.01.08.AEW.Dynamite.a.jpg
     alt: Buddy curbstomping Billy
-  - src: /assets/aew-2025-01/2025.01.08.AEW.Dynamite.b.jpg
+  - src: /assets/snapshots/2025.01.08.AEW.Dynamite.b.jpg
     alt: Buddy curbstomping Billy
 ---

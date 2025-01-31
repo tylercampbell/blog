@@ -8,6 +8,6 @@ tags:
   - fans
   - beast
 images:
-  - src: /assets/aew-2025-01/2025.01.18.AEW.Collision.h.jpg
+  - src: /assets/snapshots/2025.01.18.AEW.Collision.h.jpg
     alt: Young fan beat Bad Apple's ass
 ---

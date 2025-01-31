@@ -8,6 +8,6 @@ tags:
   - toni
   - renee
 images:
-  - src: /assets/aew-2025-01/2025.01.22.AEW.Dynamite.b.jpg
+  - src: /assets/snapshots/2025.01.22.AEW.Dynamite.b.jpg
     alt: Harley & Toni speak Australian
 ---
