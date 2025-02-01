@@ -1,5 +1,5 @@
 ---
-title: EVERYTHING IS EVIL
+title: EVIL
 author: 😶‍🌫️
 tags: 
   - EVIL
