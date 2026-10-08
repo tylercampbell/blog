@@ -6,6 +6,8 @@ export default async function(eleventyConfig) {
     eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
         // Output formats for each image.
         formats: ["svg", "avif", "webp", "auto"],
+        // SVG sources stay SVG; don't also make raster copies of them
+        svgShortCircuit: true,
         widths: ["480","640","1280"],
         failOnError: false,
         urlPath: "/img/",
