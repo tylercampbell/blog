@@ -18,12 +18,12 @@ eleventyNavigation:
 
     <div class="ml-2 pl-2 border-l border-[var(--color-decor)]">
 
-      {# Group posts by show within the same date #}
-      {% set postsByShow = posts | groupBy("show") %}
+      {# Group posts by promotion, then by show, so shows with the same name stay separate #}
+      {% set postsByPromotion = posts | groupBy("promotion") %}
+      {% for promotion, promotionPosts in postsByPromotion %}
+      {% set postsByShow = promotionPosts | groupBy("show") %}
       {# Loop through each show group #}
       {% for show, showPosts in postsByShow %}
-        {# Get the promotion from the first post in the show group #}
-        {% set promotion = showPosts[0].data.promotion %}
 
         <h3 class="pt-6 text-lg sm:text-xl font-bold font-nunito">{{ promotion }} {{ show }}</h3>
 
@@ -40,6 +40,7 @@ eleventyNavigation:
           </article>
 
         {% endfor %}
+      {% endfor %}
       {% endfor %}
     </div>
 
