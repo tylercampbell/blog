@@ -91,7 +91,7 @@
   }
   button.pagefind-ui__search-clear::before {
     @apply pl-1 text-2xl text-[var(--color-decor)] hover:text-[var(--color-accent)] focus:text-[var(--color-accent)];
-    content: '✖';
+    content: '\2716\FE0E'; /* ✖ as text, not emoji, so it takes the color */
   }
   .pagefind-ui__message,
   .pagefind-ui__result {
