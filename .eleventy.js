@@ -2,6 +2,8 @@ import { InputPathToUrlTransformPlugin } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import pluginNavigation from "@11ty/eleventy-navigation";
 
+import metadata from "./_data/metadata.js";
+
 import pluginFilters from "./_11ty/filters.js";
 import postcssFilter from "./_11ty/postcss.js";
 import imageTransform from "./_11ty/image.js";
@@ -49,12 +51,12 @@ export default async function(eleventyConfig) {
       limit: 10,
     },
     metadata: {
-      language: "en",
-      title: "Wrestling Baby",
-      subtitle: "A wrestling website for crybabies",
-      base: "https://www.wrestling.baby/",
+      language: metadata.language,
+      title: metadata.title,
+      subtitle: metadata.description,
+      base: metadata.url,
       author: {
-        name: "Wrestling Baby"
+        name: metadata.author.name
       }
     }
   });
@@ -90,6 +92,9 @@ export default async function(eleventyConfig) {
   
   eleventyConfig.addShortcode("currentBuildDate", () => {
     return (new Date()).toISOString();
+  });
+  eleventyConfig.addShortcode("currentYear", () => {
+    return (new Date()).getFullYear();
   });
 };
 

@@ -6,33 +6,14 @@
     <title>{{ title or metadata.title }}</title>
     <meta name="description" content="{{ description or metadata.description }}">
     <meta name="generator" content="{{ eleventy.generator }}">
-    <link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" id="theme-color">
-    
-    {#-
-    Plain-text bundles are provided via the `eleventy-plugin-bundle` plugin:
-    1. CSS:
-      * Add to a per-page bundle using `{% css %}{% endcss %}`
-      * Retrieve bundle content using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
-    2. Or for JavaScript:
-      * Add to a per-page bundle using `{% js %}{% endjs %}`
-      * Retrieve via `{% getBundle "js" %}` or `{% getBundleFileUrl "js" %}`
-    3. Learn more: https://github.com/11ty/eleventy-plugin-bundle
-    #}
 
-    {#- Add an arbitrary string to the bundle #}
-    {%- css %}/* This is an arbitrary CSS string added to the bundle */{% endcss %}
-    {#- Add the contents of a file to the bundle #}
-    {#- Or you can add from node_modules #}
-    {# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
-
-    {#- Render the CSS bundle using inlined CSS (for the fastest site performance in production) #}
-    {# <style>{% getBundle "css" %}</style> #}
-    {#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
+    {#- Tailwind is compiled once per build (see _11ty/postcss.js) and bundled into a CSS file #}
     {%- css %}
       {% set css %}
         {% include "tailwind.css" %}
@@ -54,7 +35,7 @@
         
         <footer class="text-xs text-center mt-auto py-4">
           <ul class="flex items-end justify-center gap-x-4 sm:gap-x-8">
-            <li>© 2025 </li>
+            <li>© {% currentYear %} </li>
             <li>👶 <a href="mailto:contact@wrestling.baby" class="underline">contact@wrestling.baby</a></li>
             <li>🦋 <a href="https://bsky.app/profile/wrestling.baby" class="underline">Bluesky</a></li>
             <li>📡 <a class="underline" href="/feed/feed.xml">RSS/Atom</a></li>

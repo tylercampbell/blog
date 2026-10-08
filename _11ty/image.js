@@ -9,13 +9,15 @@ export default async function(eleventyConfig) {
         widths: ["480","640","1280"],
         failOnError: false,
         urlPath: "/img/",
-        htmlOptions: {
-            imgAttributes: {
-                // e.g. <img loading decoding> assigned on the HTML tag will override these values.
-                loading: "lazy",
-                decoding: "async",
-            }
+        // e.g. <img loading decoding> assigned on the HTML tag will override these values.
+        defaultAttributes: {
+            loading: "lazy",
+            decoding: "async",
         },
+        // Don't use `htmlOptions.imgAttributes`: eleventy-img writes each image's `src` into that
+        // shared object, which changes its in-memory cache key and re-encodes the same image on
+        // every page it appears on. The empty object also replaces the plugin's shared default.
+        htmlOptions: {},
         sharpOptions: {
             animated: true,
         },

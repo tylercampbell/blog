@@ -1,8 +1,22 @@
-// https://rknight.me/using-pagefind-with-eleventy-for-search/
-import { execSync } from 'child_process'
+// https://pagefind.app/docs/node-api/
+import * as pagefind from "pagefind";
+
+// Pagefind returns errors in its responses instead of throwing them.
+function check({ errors, ...response }) {
+  if (errors.length) {
+    throw new Error(`Pagefind: ${errors.join(", ")}`);
+  }
+  return response;
+}
 
 export default eleventyConfig => {
-  eleventyConfig.on('eleventy.after', () => {
-    execSync(`npx pagefind --site _site --glob \"**/*.html\"`, { encoding: 'utf-8' })
-  })
-}
+  eleventyConfig.on("eleventy.after", async ({ directories }) => {
+    try {
+      const { index } = check(await pagefind.createIndex());
+      check(await index.addDirectory({ path: directories.output, glob: "**/*.html" }));
+      check(await index.writeFiles({ outputPath: `${directories.output}pagefind` }));
+    } finally {
+      await pagefind.close();
+    }
+  });
+};
