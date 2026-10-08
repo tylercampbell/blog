@@ -9,6 +9,8 @@ import postcssFilter from "./_11ty/postcss.js";
 import imageTransform from "./_11ty/image.js";
 import pluginShortcodes from "./_11ty/shortcodes.js";
 import pagefindPlugin from "./_11ty/pagefind.js";
+import relativeImages from "./_11ty/relative-images.js";
+import { warnSimilarTags } from "./_11ty/tag-check.js";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function(eleventyConfig) {
@@ -79,7 +81,10 @@ export default async function(eleventyConfig) {
   eleventyConfig.addCollection("combinedPosts", function(collectionApi) {
     const posts = collectionApi.getFilteredByTag("post");
     const snapshots = collectionApi.getFilteredByTag("snapshot");
-    return posts.concat(snapshots).sort((a, b) => b.date - a.date); // Sort by date (newest first)
+    const combined = posts.concat(snapshots);
+    // Runs here because this is the one place that sees every tagged post and snapshot
+    warnSimilarTags(combined);
+    return combined.sort((a, b) => b.date - a.date); // Sort by date (newest first)
   });
 
   // Image optimization
@@ -89,6 +94,7 @@ export default async function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginFilters);
   eleventyConfig.addPlugin(postcssFilter);
   eleventyConfig.addPlugin(pluginShortcodes);
+  eleventyConfig.addPlugin(relativeImages);
   
   eleventyConfig.addShortcode("currentBuildDate", () => {
     return (new Date()).toISOString();
