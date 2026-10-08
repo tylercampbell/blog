@@ -6,6 +6,18 @@
 [context.branch-deploy]
   command = "npm run build && cp _headers _site/_headers"
 
+# CACHING
+# Files in /img/ and /dist/ have content-hashed names, so browsers can keep them forever
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/dist/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # POST BUILD OPTIMIZATIONS
 [build.processing]
   skip_processing = true
